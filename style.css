@@ -278,3 +278,30 @@ footer {
     }
 
 }
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+    gap: 16px 24px;
+    margin-top: 20px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.social-link img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+.social-link:hover {
+    transform: translateX(4px);
+    opacity: 0.8;
+}
