@@ -9,20 +9,26 @@ document.querySelectorAll('nav a').forEach(anchor => {
     });
 });
 
-// Reveal animation + progress bar
+// Reveal animation (modern yöntem)
 const reveals = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+reveals.forEach(el => observer.observe(el));
+
+
+// Progress bar
 const progressBar = document.querySelector(".progress-bar");
 
 window.addEventListener("scroll", () => {
-    reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-
-        if (elementTop < windowHeight - 120) {
-            el.classList.add("active");
-        }
-    });
-
     const scrollTop = document.documentElement.scrollTop;
     const scrollHeight =
         document.documentElement.scrollHeight -

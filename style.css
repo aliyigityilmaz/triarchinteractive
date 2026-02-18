@@ -104,32 +104,6 @@ nav a:hover::after {
     margin-top:10px;
 }
 
-/* Projects */
-
-.projects-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
-    gap:40px;
-    margin-top:50px;
-}
-
-.project-card {
-    background:#1a1a1a;
-    border-radius:10px;
-    overflow:hidden;
-    transition:0.4s;
-    position:relative;
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 40px rgba(255,255,255,0.1);
-}
-
-.project-card img {
-    width:100%;
-    display:block;
-}
 
 .overlay {
     position: absolute;
@@ -143,15 +117,6 @@ nav a:hover::after {
     opacity: 0;
     transition: opacity 0.3s ease;
     font-weight: 500;
-}
-
-.project-card:hover .overlay {
-    opacity: 1;
-}
-
-
-.project-info {
-    padding:20px;
 }
 
 .btn {
@@ -195,21 +160,26 @@ footer {
     margin-top: 60px;
 }
 .project-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    transition: transform 0.3s ease;
+    border-radius:16px;
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
+.project-image {
+    display:block;
+    overflow:hidden;
+    border-radius:16px;
 }
-.project-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 16px;
+
+.project-image img {
+    width:100%;
+    display:block;
+    transition: transform 0.5s ease;
 }
+
+/* SADECE FOTO ZOOM */
+.project-image:hover img {
+    transform: scale(1.08);
+}
+
 .project-info {
     margin-top: 15px;
     text-align: center;
