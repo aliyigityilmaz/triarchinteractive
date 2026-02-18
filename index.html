@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Triarch Interactive</title>
 
-<link rel="icon" type="image/png" href="companylogo.png">
+<link rel="icon" type="image/png" href="assets/companylogo.png">
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
@@ -16,7 +16,7 @@
 
 <header>
     <div class="logo-container">
-        <img src="companylogo.png" class="logo-img">
+        <img src="assets/companylogo.png" class="logo-img">
         <div class="logo-text">TRIARCH INTERACTIVE</div>
     </div>
 
@@ -42,13 +42,13 @@
     <div class="projects-grid">
 
         <div class="project-card">
-            <a href="keepitcontained.html">
-                <img src="keepitcontained.jpg">
+            <a href="https://keepitcontained.net" target="_blank">
+                <img src="assets/games/keepitcontained.png">
                 <div class="overlay">View Project</div>
             </a>
             <div class="project-info">
                 <h3>Keep It Contained</h3>
-                <a href="https://store.steampowered.com/" target="_blank" class="btn">
+                <a href="https://store.steampowered.com/app/4251090/Keep_It_Contained/" target="_blank" class="btn">
                     Purchase & Download
                 </a>
             </div>
@@ -77,40 +77,8 @@
 © 2026 Triarch Interactive. All rights reserved.
 </footer>
 
-<script>
+<script src="js/main.js"></script>
 
-// Smooth scroll
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        if(this.getAttribute("href").startsWith("#")){
-            e.preventDefault();
-            document.querySelector(this.getAttribute("href"))
-                .scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-// Reveal animation
-const reveals = document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll", () => {
-    reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-
-        if (elementTop < windowHeight - 120) {
-            el.classList.add("active");
-        }
-    });
-
-    // Scroll progress bar
-    const scrollTop = document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = (scrollTop / scrollHeight) * 100;
-    document.querySelector(".progress-bar").style.width = progress + "%";
-});
-
-</script>
 
 </body>
 </html>
