@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triarch Interactive</title>
+
+<link rel="icon" type="image/png" href="companylogo.png">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="progress-bar"></div>
+
+<header>
+    <div class="logo-container">
+        <img src="companylogo.png" class="logo-img">
+        <div class="logo-text">TRIARCH INTERACTIVE</div>
+    </div>
+
+    <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#">Press</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Crafting Immersive Experiences</h1>
+    <p>Independent game development driven by passion, precision, and purpose.</p>
+</section>
+
+<section id="projects" class="section reveal">
+    <h2>Our Projects</h2>
+    <p class="section-subtext">
+        These are our released titles. Many more projects are currently in development — stay tuned.
+    </p>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <a href="keepitcontained.html">
+                <img src="keepitcontained.jpg">
+                <div class="overlay">View Project</div>
+            </a>
+            <div class="project-info">
+                <h3>Keep It Contained</h3>
+                <a href="https://store.steampowered.com/" target="_blank" class="btn">
+                    Purchase & Download
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="about" class="section reveal">
+    <h2>About Us</h2>
+
+    <p>
+    We are an independent game studio driven by a genuine passion for games. Our goal is simple: to create the kinds of games we love to play ourselves.
+    </p>
+
+    <p>
+    We focus on strong core mechanics, thoughtful design, and meaningful player experiences. Rather than following trends, we aim to build games with character, clarity, and care.
+    </p>
+
+    <p>
+    As an indie team, we value creativity, iteration, and hands-on development, believing that great games come from small teams with a clear vision and a lot of passion.
+    </p>
+</section>
+
+<footer>
+© 2026 Triarch Interactive. All rights reserved.
+</footer>
+
+<script>
+
+// Smooth scroll
+document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        if(this.getAttribute("href").startsWith("#")){
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href"))
+                .scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+
+// Reveal animation
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 120) {
+            el.classList.add("active");
+        }
+    });
+
+    // Scroll progress bar
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.querySelector(".progress-bar").style.width = progress + "%";
+});
+
+</script>
+
+</body>
+</html>
