@@ -1,188 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Triarch Interactive</title>
-
-<link rel="icon" type="image/png" href="assets/companylogo.png">
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triarch Interactive</title>
+  <link rel="icon" type="image/png" href="assets/companylogo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="progress-bar"></div>
+  <div class="progress-bar" id="progressBar"></div>
 
-<header>
-    <div class="logo-container">
-        <img src="assets/companylogo.png" class="logo-img">
-        <div class="logo-text">TRIARCH INTERACTIVE</div>
-    </div>
-
+  <!-- ── HEADER ─────────────────────────────────────── -->
+  <header id="site-header">
+    <a href="#" class="logo-wrap">
+      <img src="assets/companylogo.png" alt="Triarch Interactive" class="logo-img">
+      <span class="logo-text">TRIARCH INTERACTIVE</span>
+    </a>
     <nav>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#press">Press</a>
-        <a href="#contact">Contact</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#press">Press</a>
+      <a href="#contact">Contact</a>
     </nav>
-</header>
+  </header>
 
-<section class="hero">
-    <h1>Crafting Immersive Experiences</h1>
-    <p>Independent game development driven by passion, precision, and purpose.</p>
-</section>
+  <!-- ── HERO ──────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Independent Game Studio</p>
+      <h1 class="hero-title">We Make<br><span class="hero-title-outline">Games</span><br>Worth Playing.</h1>
+      <p class="hero-sub">Driven by craft, character, and an obsession with getting it right.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-fill">Our Games</a>
+        <a href="#about" class="btn-line">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-<section id="projects" class="section reveal">
-    <h2>Our Projects</h2>
-    <p class="section-subtext">
-        These are our released titles. Many more projects are currently in development — stay tuned.
-    </p>
+  <!-- ── PROJECTS ──────────────────────────────────── -->
+  <section id="projects" class="section reveal">
+    <div class="section-header">
+      <div>
+        <p class="label">Released Titles</p>
+        <h2>Our Games</h2>
+      </div>
+      <p class="section-desc">A growing library of titles built with care.<br>Many more are in development.</p>
+    </div>
 
     <div class="projects-grid">
 
-        <div class="project-card">
-
-    <!-- FOTOĞRAF LINK -->
-    <a href="https://keepitcontained.net" target="_blank" class="project-image">
-        <img src="assets/games/keepitcontained.png" alt="Keep It Contained">
-    </a>
-
-    <!-- BİLGİ & BUTON -->
-    <div class="project-info">
-        <h3>Keep It Contained</h3>
-
-        <a href="https://store.steampowered.com/app/4251090/Keep_It_Contained/" 
-           target="_blank" 
-           class="btn">
-            Purchase & Download
+      <article class="project-card">
+        <a href="https://keepitcontained.net" target="_blank" class="project-thumb">
+          <img src="assets/games/keepitcontained.png" alt="Keep It Contained">
+          <div class="thumb-overlay">
+            <span>View Site ↗</span>
+          </div>
         </a>
+        <div class="project-meta">
+          <div class="project-meta-left">
+            <p class="project-tag">Available Now · Steam</p>
+            <h3>Keep It Contained</h3>
+          </div>
+          <a href="https://store.steampowered.com/app/4251090/Keep_It_Contained/"
+             target="_blank" class="btn-fill sm">Get on Steam</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────── -->
+  <section id="about" class="section reveal about-section">
+    <div class="section-header">
+      <div>
+        <p class="label">Who We Are</p>
+        <h2>Built by<br>Players.</h2>
+      </div>
     </div>
 
-</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>We are an independent game studio driven by a genuine love for games. Our goal is to create the kinds of games we love to play ourselves — titles that feel well-crafted, memorable, and worth your time.</p>
+        <p>We focus on strong core mechanics, thoughtful design, and meaningful player experiences. Rather than chasing trends, we build games with character, clarity, and care.</p>
+        <p>As an indie team, we value creativity, iteration, and hands-on craft. Great games come from small teams with a sharp vision and real passion for what they make.</p>
+      </div>
 
-
+      <div class="about-values">
+        <div class="value-item">
+          <span class="value-num">01</span>
+          <div>
+            <h4>Play-First Design</h4>
+            <p>Every decision is measured against one question: does this make the game better to play?</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-num">02</span>
+          <div>
+            <h4>Sharp Mechanics</h4>
+            <p>We obsess over feel — controls, feedback, pacing. The invisible stuff that makes players love a game.</p>
+          </div>
+        </div>
+        <div class="value-item">
+          <span class="value-num">03</span>
+          <div>
+            <h4>End-to-End Craft</h4>
+            <p>We build our games ourselves, start to finish. No outsourcing the soul of a project.</p>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
 
-<section id="about" class="section reveal">
-    <h2>About Us</h2>
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Game Released</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">In Development</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Independent</span>
+      </div>
+    </div>
+  </section>
 
-    <p>
-    We are an independent game studio driven by a genuine passion for games. Our goal is simple: to create the kinds of games we love to play ourselves.
-    </p>
+  <!-- ── PRESS ──────────────────────────────────────── -->
+  <section id="press" class="section reveal">
+    <div class="section-header">
+      <div>
+        <p class="label">Media</p>
+        <h2>Press</h2>
+      </div>
+    </div>
 
-    <p>
-    We focus on strong core mechanics, thoughtful design, and meaningful player experiences. Rather than following trends, we aim to build games with character, clarity, and care.
-    </p>
-
-    <p>
-    As an indie team, we value creativity, iteration, and hands-on development, believing that great games come from small teams with a clear vision and a lot of passion.
-    </p>
-</section>
-
-<section id="press" class="section reveal">
-    <h2>Press</h2>
-
-    <p class="section-subtext">
-        Press kit and media assets will be available soon.
-    </p>
-
-    <div class="press-box">
+    <div class="press-card">
+      <div class="press-card-inner">
         <h3>Press Kit</h3>
-        <p>
-            Official logos, screenshots, trailers and press materials 
-            will be shared here.
-        </p>
-
-        <button class="btn disabled-btn">
-            Coming Soon
-        </button>
+        <p>Official logos, screenshots, trailers and press materials will be available here. Check back soon.</p>
+        <button class="btn-disabled" disabled>Coming Soon</button>
+      </div>
+      <div class="press-bg-text">PRESS</div>
     </div>
-</section>
+  </section>
 
-<section id="contact" class="section reveal">
-    <h2>Contact</h2>
+  <!-- ── CONTACT ────────────────────────────────────── -->
+  <section id="contact" class="section reveal">
+    <div class="section-header">
+      <div>
+        <p class="label">Get In Touch</p>
+        <h2>Contact</h2>
+      </div>
+    </div>
 
     <div class="contact-grid">
 
-        <!-- SOCIALS -->
-        <div class="contact-box">
-    <h3>Our Socials</h3>
+      <div class="contact-box">
+        <h3>Follow Us</h3>
+        <ul class="social-list">
+          <li><a href="https://www.instagram.com/triarchinteractive/" target="_blank" class="social-link">
+            <img src="assets/icons/instagram.png" alt=""> <span>Instagram</span> <em>↗</em>
+          </a></li>
+          <li><a href="https://www.linkedin.com/company/triarch-interactive/" target="_blank" class="social-link">
+            <img src="assets/icons/linkedin.png" alt=""> <span>LinkedIn</span> <em>↗</em>
+          </a></li>
+          <li><a href="https://tiktok.com/@triarchinteractive" target="_blank" class="social-link">
+            <img src="assets/icons/tiktok.png" alt=""> <span>TikTok</span> <em>↗</em>
+          </a></li>
+          <li><a href="https://store.steampowered.com/publisher/triarchinteractive" target="_blank" class="social-link">
+            <img src="assets/icons/steam.png" alt=""> <span>Steam</span> <em>↗</em>
+          </a></li>
+          <li><a href="https://x.com/TriarchInt" target="_blank" class="social-link">
+            <img src="assets/icons/x.png" alt=""> <span>X / Twitter</span> <em>↗</em>
+          </a></li>
+          <li><a href="https://www.reddit.com/r/TriarchInteractive/" target="_blank" class="social-link">
+            <img src="assets/icons/reddit.png" alt=""> <span>Reddit</span> <em>↗</em>
+          </a></li>
+          <li><a href="https://www.youtube.com/@TriarchInteractive" target="_blank" class="social-link">
+            <img src="assets/icons/youtube.png" alt=""> <span>YouTube</span> <em>↗</em>
+          </a></li>
+        </ul>
+      </div>
 
-    <div class="social-grid">
-
-        <a href="https://www.instagram.com/triarchinteractive/" class="social-link" target="_blank">
-            <img src="assets/icons/instagram.png" alt="Instagram">
-            <span>Instagram</span>
+      <div class="contact-box contact-box-highlight">
+        <h3>Say Hello</h3>
+        <p>For business inquiries, collaborations, or press requests — we'd love to hear from you.</p>
+        <a href="mailto:triarchinteractive@gmail.com" class="email-link">
+          triarchinteractive@gmail.com
         </a>
-
-        <a href="https://www.linkedin.com/company/triarch-interactive/" class="social-link" target="_blank">
-            <img src="assets/icons/linkedin.png" alt="LinkedIn">
-            <span>LinkedIn</span>
-        </a>
-
-        <a href="https://tiktok.com/@triarchinteractive" class="social-link" target="_blank">
-            <img src="assets/icons/tiktok.png" alt="TikTok">
-            <span>TikTok</span>
-        </a>
-
-        <a href="https://store.steampowered.com/publisher/triarchinteractive" class="social-link" target="_blank">
-            <img src="assets/icons/steam.png" alt="Steam">
-            <span>Steam</span>
-        </a>
-
-        <a href="https://x.com/TriarchInt" class="social-link" target="_blank">
-            <img src="assets/icons/x.png" alt="X">
-            <span>X</span>
-        </a>
-
-        <a href="https://www.reddit.com/r/TriarchInteractive/" class="social-link" target="_blank">
-            <img src="assets/icons/reddit.png" alt="Reddit">
-            <span>Reddit</span>
-        </a>
-
-        <a href="https://www.youtube.com/@TriarchInteractive" class="social-link" target="_blank">
-            <img src="assets/icons/youtube.png" alt="YouTube">
-            <span>YouTube</span>
-        </a>
-
-        <!-- İleride Discord eklersin -->
-        <!--
-        <a href="#" class="social-link" target="_blank">
-            <img src="assets/icons/discord.png" alt="Discord">
-            <span>Discord</span>
-        </a>
-        -->
+      </div>
 
     </div>
-</div>
+  </section>
 
-
-        <!-- CONTACT US -->
-        <div class="contact-box">
-            <h3>Contact Us</h3>
-
-            <p>
-                For business inquiries, collaborations, or press requests,
-                feel free to reach out to us.
-            </p>
-
-            <a href="mailto:triarchinteractive@gmail.com" class="contact-email">
-                triarchinteractive@gmail.com
-            </a>
-        </div>
-
+  <!-- ── FOOTER ─────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-logo">TRIARCH INTERACTIVE</span>
+      <span class="footer-copy">© 2026 All rights reserved.</span>
+      <a href="#" class="footer-top">↑ Top</a>
     </div>
-</section>
+  </footer>
 
-
-<footer>
-© 2026 Triarch Interactive. All rights reserved.
-</footer>
-
-<script src="js/main.js"></script>
-
+  <script src="js/main.js"></script>
 
 </body>
 </html>
