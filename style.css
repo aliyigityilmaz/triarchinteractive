@@ -628,19 +628,6 @@ nav a:hover::after {
   line-height: 1.75;
 }
 
-.btn-disabled {
-  padding: 12px 28px;
-  background: transparent;
-  color: rgba(245,245,245,0.2);
-  font-family: var(--font-cond);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border: 1px solid rgba(245,245,245,0.1);
-  cursor: not-allowed;
-  margin-top: 8px;
-}
 
 /* ── CONTACT ─────────────────────────────────────────────── */
 .contact-grid {
