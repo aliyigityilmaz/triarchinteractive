@@ -909,3 +909,42 @@ footer {
   .hero-actions { flex-direction: column; }
   .btn-fill, .btn-line { text-align: center; }
 }
+
+/* ── COMING SOON CARDS ───────────────────────────────────── */
+.project-thumb-soon {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+}
+
+.thumb-overlay-soon {
+  opacity: 1 !important;
+  background: rgba(8,8,8,0.45);
+}
+
+.thumb-overlay-soon span {
+  font-family: var(--font-cond);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  border: 1px solid rgba(245,245,245,0.2);
+  padding: 8px 18px;
+}
+
+.btn-disabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+  background: var(--white);
+  color: var(--black);
+}
+
+.btn-disabled:hover {
+  transform: none;
+  box-shadow: none;
+  background: var(--white);
+  color: var(--black);
+}
