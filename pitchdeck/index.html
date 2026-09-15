@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Triarch Interactive — Pitch Deck</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="../assets/companylogo.png">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="deck.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      var saved = localStorage.getItem('triarch-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body class="deck-body">
+
+  <div class="deck-progress" id="deckProgress"></div>
+
+  <div class="deck-topbar">
+    <a href="../index.html" class="deck-topbar-logo">
+      <img src="../assets/companylogo.png" alt="">
+      <span>TRIARCH INTERACTIVE</span>
+    </a>
+    <div class="deck-topbar-right">
+      <span class="deck-topbar-tag">Investor Deck · 2026</span>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── SIDEBAR NAV ─────────────────────────────────────── -->
+  <nav class="deck-sidebar" id="deckSidebar" aria-label="Slide navigation">
+    <ol class="deck-sidebar-list" id="deckSidebarList">
+      <li data-target="0"><span class="dot"></span><span class="lbl"><em>01</em>Cover</span></li>
+      <li data-target="1"><span class="dot"></span><span class="lbl"><em>02</em>Opportunity</span></li>
+      <li data-target="2"><span class="dot"></span><span class="lbl"><em>03</em>Team</span></li>
+      <li data-target="3"><span class="dot"></span><span class="lbl"><em>04</em>Proven Execution</span></li>
+      <li data-target="4"><span class="dot"></span><span class="lbl"><em>05</em>Traction</span></li>
+      <li data-target="5"><span class="dot"></span><span class="lbl"><em>06</em>Growth</span></li>
+      <li data-target="6"><span class="dot"></span><span class="lbl"><em>07</em>Pipeline</span></li>
+      <li data-target="7"><span class="dot"></span><span class="lbl"><em>08</em>Why It Works</span></li>
+      <li data-target="8"><span class="dot"></span><span class="lbl"><em>09</em>Roadmap</span></li>
+      <li data-target="9"><span class="dot"></span><span class="lbl"><em>10</em>The Ask</span></li>
+      <li data-target="10"><span class="dot"></span><span class="lbl"><em>11</em>Use of Funds</span></li>
+      <li data-target="11"><span class="dot"></span><span class="lbl"><em>12</em>Contact</span></li>
+    </ol>
+    <div class="deck-sidebar-arrows">
+      <button type="button" class="deck-arrow-btn" id="arrowUp" aria-label="Previous slide">↑</button>
+      <button type="button" class="deck-arrow-btn" id="arrowDown" aria-label="Next slide">↓</button>
+    </div>
+  </nav>
+
+  <div class="deck-scroller" id="deckScroller">
+
+    <!-- 01 — COVER -->
+    <section class="slide slide-cover">
+      <div class="deco deco-a"></div>
+      <div class="deco deco-b"></div>
+      <p class="slide-eyebrow">Investor Overview · 2026</p>
+      <h1 class="deck-title">TRIARCH<br><span class="outline">INTERACTIVE</span></h1>
+      <p class="slide-tagline">We Make Games Worth Playing.</p>
+      <p class="slide-sub">An independent game studio building a portfolio of sharp, character-driven titles — one shipped, four in motion.</p>
+    </section>
+
+    <!-- 02 — THE OPPORTUNITY -->
+    <section class="slide">
+      <div class="deco deco-a"></div>
+      <p class="label">The Opportunity</p>
+      <h2>A Small Team.<br>A Real Pipeline.</h2>
+      <div class="two-col">
+        <div class="col-text">
+          <p>Triarch Interactive is a lean, 5-person independent studio that already shipped a commercial title and is now running four more in parallel development — across distinct genres, all self-published on Steam.</p>
+          <p>We're not pitching an idea. We're pitching a working studio with a live catalog, a real audience funnel, and a clear plan to scale marketing spend into that momentum.</p>
+        </div>
+        <div class="stat-block">
+          <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">Game Shipped</span></div>
+          <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">In Development</span></div>
+          <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Independent</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — TEAM -->
+    <section class="slide">
+      <div class="deco deco-b"></div>
+      <p class="label">The Team</p>
+      <h2>5 People.<br>Every Discipline Covered.</h2>
+      <p class="section-desc-left">A small, hands-on, remote-first team — no outsourcing the soul of the project.</p>
+      <div class="fact-chip-row">
+        <span class="fact-chip">Istanbul &amp; Berlin</span>
+        <span class="fact-chip">Game Design Graduates</span>
+        <span class="fact-chip">Remote-First</span>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <span class="team-num">02</span>
+          <h4>Development &amp; Design</h4>
+          <p>Led by co-founder <strong>Ali Yiğit Yılmaz</strong>, who works hands-on across game design, development, and studio operations, alongside a second developer/designer. Both studied Game Design.</p>
+        </div>
+        <div class="team-card">
+          <span class="team-num">03</span>
+          <h4>Art — 3D &amp; 2D</h4>
+          <p>Three artists spanning 3D art and 2D/UI art, giving every title a distinct, polished visual identity without external contractors. All hold or are completing Game Design degrees.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — PROVEN EXECUTION -->
+    <section class="slide">
+      <div class="deco deco-a"></div>
+      <p class="label">Proven Execution</p>
+      <h2>Keep It Contained</h2>
+      <p class="section-desc-left">Our first shipped title on Steam — built, launched, and sold entirely on organic reach, with zero paid marketing spend to date.</p>
+      <div class="metric-row">
+        <div class="metric"><span class="metric-num">117</span><span class="metric-label">Total Units Sold</span></div>
+        <div class="metric"><span class="metric-num">34m</span><span class="metric-label">Median Playtime</span></div>
+        <div class="metric"><span class="metric-num">$0</span><span class="metric-label">Marketing Spend</span></div>
+      </div>
+      <p class="metric-footnote">A first commercial release proves the studio can design, build, and ship a complete game end-to-end — the foundation the next four titles build on with real marketing behind them.</p>
+    </section>
+
+    <!-- 05 — TRACTION -->
+    <section class="slide">
+      <div class="deco deco-b"></div>
+      <p class="label">Traction</p>
+      <h2>Organic Reach,<br>Before Any Ad Spend.</h2>
+      <div class="metric-row">
+        <div class="metric"><span class="metric-num">1.28M</span><span class="metric-label">Steam Store Impressions</span></div>
+        <div class="metric"><span class="metric-num">69.8K</span><span class="metric-label">Store Page Visits</span></div>
+        <div class="metric"><span class="metric-num">4–5K</span><span class="metric-label">Current Wishlists (all titles)</span></div>
+      </div>
+      <p class="metric-footnote">All of this happened without a marketing budget. Two upcoming titles are registered for the next Steam Next Fest — we expect this to meaningfully accelerate wishlist growth heading into 2027.</p>
+    </section>
+
+    <!-- 06 — GROWTH TRAJECTORY -->
+    <section class="slide">
+      <div class="deco deco-a"></div>
+      <p class="label">Growth Trajectory</p>
+      <h2>Where This Is<br>Heading.</h2>
+      <p class="section-desc-left">We're especially confident in <strong>Tinker's Nook</strong> and <strong>Take That Shot</strong> — both are entering Steam Next Fest, and with a dedicated marketing push behind them, we're targeting a significant step up in combined wishlists.</p>
+      <div class="growth-bar-wrap">
+        <div class="growth-row">
+          <span class="growth-tag">Today</span>
+          <div class="growth-track"><div class="growth-fill" style="width:22%"></div></div>
+          <span class="growth-value">~4–5K</span>
+        </div>
+        <div class="growth-row">
+          <span class="growth-tag">Post–Next Fest Target</span>
+          <div class="growth-track"><div class="growth-fill growth-fill-target" style="width:100%"></div></div>
+          <span class="growth-value">20K+</span>
+        </div>
+      </div>
+      <p class="metric-footnote projection-note">Projection, not a current figure — based on Next Fest placement for two titles plus a planned marketing push. Included so investors see where the studio is aiming, not just where it stands today.</p>
+    </section>
+
+    <!-- 07 — PRODUCT PIPELINE -->
+    <section class="slide">
+      <div class="deco deco-b"></div>
+      <p class="label">Product Pipeline</p>
+      <h2>Four Titles,<br>In Motion.</h2>
+      <div class="pipeline-grid">
+        <div class="pipeline-card">
+          <p class="pipeline-tag">Available Now · Steam</p>
+          <h4>Keep It Contained</h4>
+        </div>
+        <div class="pipeline-card">
+          <p class="pipeline-tag">Wishlist Now · Next Fest</p>
+          <h4>Keep It Checked</h4>
+        </div>
+        <div class="pipeline-card">
+          <p class="pipeline-tag">Wishlist Now · Next Fest</p>
+          <h4>Tinker's Nook</h4>
+        </div>
+        <div class="pipeline-card">
+          <p class="pipeline-tag">Wishlist Now</p>
+          <h4>Take That Shot</h4>
+        </div>
+        <div class="pipeline-card">
+          <p class="pipeline-tag">Coming Soon</p>
+          <h4>Endless Check</h4>
+        </div>
+      </div>
+      <a href="https://store.steampowered.com/developer/triarchinteractive" target="_blank" class="slide-link">View Our Full Steam Catalog ↗</a>
+    </section>
+
+    <!-- 08 — WHY IT WORKS -->
+    <section class="slide">
+      <div class="deco deco-a"></div>
+      <p class="label">Why It Works</p>
+      <h2>Built To Be<br>Capital-Efficient.</h2>
+      <div class="edge-grid">
+        <div class="edge-card">
+          <span class="edge-num">01</span>
+          <h4>Portfolio, Not One Bet</h4>
+          <p>Five titles across different genres mean the studio's outcome never hinges on a single game succeeding.</p>
+        </div>
+        <div class="edge-card">
+          <span class="edge-num">02</span>
+          <h4>Self-Published Economics</h4>
+          <p>Every launch goes straight to Steam — no publisher cut, so a much larger share of revenue flows back into the studio.</p>
+        </div>
+        <div class="edge-card">
+          <span class="edge-num">03</span>
+          <h4>Lean, Distributed Team</h4>
+          <p>Five people across Istanbul and Berlin have already shipped one title and are running four more in parallel — low overhead, high output.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 — ROADMAP -->
+    <section class="slide">
+      <div class="deco deco-b"></div>
+      <p class="label">Roadmap</p>
+      <h2>What's Next.</h2>
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <p class="roadmap-stage">Now</p>
+          <h4>Build Momentum</h4>
+          <p>Keep It Contained live on Steam. Keep It Checked, Tinker's Nook, and Take That Shot in wishlist phase and entering Next Fest.</p>
+        </div>
+        <div class="roadmap-card">
+          <p class="roadmap-stage">Next</p>
+          <h4>Ship &amp; Fund Growth</h4>
+          <p>Launch Keep It Checked, Tinker's Nook, and Take That Shot, backed by a funded marketing push from this raise.</p>
+        </div>
+        <div class="roadmap-card">
+          <p class="roadmap-stage">2027</p>
+          <h4>Expand the Catalog</h4>
+          <p>Ship Endless Check and begin the studio's next titles, growing the team as scope requires.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 — THE ASK -->
+    <section class="slide">
+      <div class="deco deco-a"></div>
+      <p class="label">The Ask</p>
+      <h2>$0 – $100K</h2>
+      <p class="section-desc-left">We're raising up to $100,000 to fund marketing and the next wave of development — turning proven organic traction into a funded growth push. Terms discussed directly based on investment size.</p>
+    </section>
+
+    <!-- 11 — USE OF FUNDS -->
+    <section class="slide">
+      <div class="deco deco-b"></div>
+      <p class="label">Use of Funds</p>
+      <h2>Where It Goes.</h2>
+      <div class="funds-grid">
+        <div class="funds-row">
+          <span class="funds-pct">40%</span>
+          <div class="funds-info"><h4>Marketing &amp; Advertising</h4><p>Paid UA, influencer/creator campaigns, and Next Fest push for our upcoming titles.</p></div>
+        </div>
+        <div class="funds-row">
+          <span class="funds-pct">30%</span>
+          <div class="funds-info"><h4>Game Development</h4><p>Funding production on titles shipping through 2026 and into 2027.</p></div>
+        </div>
+        <div class="funds-row">
+          <span class="funds-pct">15%</span>
+          <div class="funds-info"><h4>Team Growth</h4><p>Bringing in additional hands as scope grows across active projects.</p></div>
+        </div>
+        <div class="funds-row">
+          <span class="funds-pct">10%</span>
+          <div class="funds-info"><h4>Tools &amp; Equipment</h4><p>Software licenses, hardware, and production tooling for the team.</p></div>
+        </div>
+        <div class="funds-row">
+          <span class="funds-pct">5%</span>
+          <div class="funds-info"><h4>Operating Buffer</h4><p>Runway cushion for unplanned costs during development.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 — CONTACT -->
+    <section class="slide slide-contact">
+      <div class="deco deco-a"></div>
+      <div class="deco deco-b"></div>
+      <p class="label">Let's Talk</p>
+      <h2>Get In Touch.</h2>
+      <a href="mailto:triarchinteractive@gmail.com" class="deck-email">triarchinteractive@gmail.com</a>
+      <div class="deck-social">
+        <a href="https://store.steampowered.com/publisher/triarchinteractive" target="_blank">Steam</a>
+        <a href="https://www.linkedin.com/company/triarch-interactive/" target="_blank">LinkedIn</a>
+        <a href="https://x.com/TriarchInt" target="_blank">X / Twitter</a>
+        <a href="https://www.instagram.com/triarchinteractive/" target="_blank">Instagram</a>
+      </div>
+      <a href="../index.html" class="btn-line back-link">← Back to Site</a>
+    </section>
+
+  </div>
+
+  <script src="deck.js"></script>
+</body>
+</html>

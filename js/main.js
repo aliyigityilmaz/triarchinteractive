@@ -2,6 +2,18 @@
    TRIARCH INTERACTIVE — main.js
 ═══════════════════════════════════════════════════════════ */
 
+/* ── THEME TOGGLE ────────────────────────────────────────── */
+const themeToggle = document.getElementById('themeToggle');
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    const next = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('triarch-theme', next);
+  });
+}
+
 /* ── PROGRESS BAR ────────────────────────────────────────── */
 const progressBar = document.getElementById('progressBar');
 
