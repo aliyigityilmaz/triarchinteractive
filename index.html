@@ -12,161 +12,177 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Triarch Interactive</title>
+  <title>Triarch Interactive — Independent Game Studio</title>
+  <meta name="description" content="Triarch Interactive is an independent game studio from Istanbul and Berlin. We make games worth playing — Keep It Contained is out now on Steam, with four more in development.">
+  <meta name="theme-color" content="#0a0a0d">
+  <link rel="canonical" href="https://triarchinteractive.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Triarch Interactive">
+  <meta property="og:title" content="Triarch Interactive — Independent Game Studio">
+  <meta property="og:description" content="We make games worth playing. Keep It Contained is out now on Steam — four more games in development.">
+  <meta property="og:url" content="https://triarchinteractive.com/">
+  <meta property="og:image" content="https://triarchinteractive.com/assets/companylogo.png">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="assets/companylogo.png">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
   <script>
     (function () {
-      var saved = localStorage.getItem('triarch-theme');
+      var saved = null;
+      try { saved = localStorage.getItem('triarch-theme'); } catch (e) {}
       var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.classList.add('js');
     })();
   </script>
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="progress-bar" id="progressBar"></div>
 
   <!-- ── HEADER ─────────────────────────────────────── -->
   <header id="site-header">
-    <a href="#" class="logo-wrap">
-      <img src="assets/companylogo.png" alt="Triarch Interactive" class="logo-img">
+    <a href="#top" class="logo-wrap" aria-label="Triarch Interactive — home">
+      <img src="assets/companylogo.png" alt="" class="logo-img" width="32" height="32">
       <span class="logo-text">TRIARCH INTERACTIVE</span>
     </a>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
+    <nav aria-label="Primary">
+      <a href="#projects">Games</a>
+      <a href="#about">Studio</a>
       <a href="#press">Press</a>
       <a href="#contact">Contact</a>
-      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch between light and dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
     </nav>
   </header>
 
+  <main id="main">
+
   <!-- ── HERO ──────────────────────────────────────── -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Independent Game Studio</p>
-      <h1 class="hero-title">We Make<br><span class="hero-title-outline">Games</span><br>Worth Playing.</h1>
-      <p class="hero-sub">Driven by craft, character, and an obsession with getting it right.</p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn-fill">Our Games</a>
-        <a href="#about" class="btn-line">Our Story</a>
+  <section class="hero" id="top">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Independent Game Studio · Istanbul &amp; Berlin</p>
+        <h1 class="hero-title">We Make<br><span class="hero-title-outline">Games</span><br>Worth Playing.</h1>
+        <p class="hero-sub">Driven by craft, character, and an obsession with getting it right.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-fill">Our Games</a>
+          <a href="#about" class="btn-line">Our Story</a>
+        </div>
+        <ul class="hero-meta" aria-label="Studio at a glance">
+          <li><strong>1</strong> released</li>
+          <li><strong>4</strong> in development</li>
+          <li><strong>100%</strong> independent</li>
+        </ul>
+      </div>
+
+      <div class="hero-posters" aria-hidden="true">
+        <img class="poster poster-left"  src="assets/games/takethatshot.webp"   alt="" width="748" height="896">
+        <img class="poster poster-right" src="assets/games/endlesscheck.webp"   alt="" width="748" height="896">
+        <img class="poster poster-main"  src="assets/games/keepitcontained.webp" alt="" width="748" height="896" fetchpriority="high">
       </div>
     </div>
-    <div class="hero-scroll-hint">
+    <div class="hero-scroll-hint" aria-hidden="true">
       <span>Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
+  <!-- ── MARQUEE ───────────────────────────────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Keep It Contained</span><i></i><span>Keep It Checked</span><i></i><span>Tinker's Nook</span><i></i><span>Take That Shot</span><i></i><span>Endless Check</span><i></i>
+      <span>Keep It Contained</span><i></i><span>Keep It Checked</span><i></i><span>Tinker's Nook</span><i></i><span>Take That Shot</span><i></i><span>Endless Check</span><i></i>
+    </div>
+  </div>
+
   <!-- ── PROJECTS ──────────────────────────────────── -->
   <section id="projects" class="section reveal">
     <div class="section-header">
       <div>
-        <p class="label">Released &amp; Upcoming Titles</p>
+        <p class="label">Released &amp; Upcoming</p>
         <h2>Our Games</h2>
       </div>
-      <p class="section-desc">A growing library of titles built with care.<br>Many more are in development.</p>
+      <p class="section-desc">A growing library of titles built with care.<br>Wishlist what's next on Steam.</p>
     </div>
+
+    <!-- Featured: released -->
+    <article class="feature-card">
+      <a href="https://keepitcontained.net" target="_blank" rel="noopener" class="feature-poster" aria-label="Visit the Keep It Contained website">
+        <img src="assets/games/keepitcontained.webp" alt="Keep It Contained key art" width="748" height="896" loading="lazy">
+      </a>
+      <div class="feature-info">
+        <span class="badge badge-live">Available now</span>
+        <h3>Keep It Contained</h3>
+        <dl class="feature-facts">
+          <div><dt>Platform</dt><dd>PC · Steam</dd></div>
+          <div><dt>Status</dt><dd>Released</dd></div>
+          <div><dt>Developer</dt><dd>Triarch Interactive</dd></div>
+        </dl>
+        <div class="feature-actions">
+          <a href="https://store.steampowered.com/app/4251090/Keep_It_Contained/" target="_blank" rel="noopener" class="btn-fill">Get on Steam</a>
+          <a href="https://keepitcontained.net" target="_blank" rel="noopener" class="btn-line">Official Site ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <h3 class="subhead">In Development</h3>
 
     <div class="projects-grid">
 
-      <!-- Keep It Contained -->
-      <article class="project-card">
-        <a href="https://keepitcontained.net" target="_blank" class="project-thumb">
-          <img src="assets/games/keepitcontained.png" alt="Keep It Contained">
-          <div class="thumb-overlay">
-            <span>View Site ↗</span>
-          </div>
-        </a>
-        <div class="project-meta">
-          <div class="project-meta-left">
-            <p class="project-tag">Available Now · Steam</p>
-            <h3>Keep It Contained</h3>
-          </div>
-          <a href="https://store.steampowered.com/app/4251090/Keep_It_Contained/"
-             target="_blank" class="btn-fill sm">Get on Steam</a>
-        </div>
-      </article>
-
       <!-- Keep It Checked -->
       <article class="project-card">
-        <div class="project-thumb project-thumb-soon">
-          <img src="assets/games/keepitchecked.png" alt="Keep It Checked">
-          <div class="thumb-overlay thumb-overlay-soon">
-            <span>Coming Soon</span>
-          </div>
+        <div class="project-thumb">
+          <img src="assets/games/keepitchecked.webp" alt="Keep It Checked key art" width="748" height="896" loading="lazy">
+          <span class="badge badge-soon">Wishlist now</span>
         </div>
         <div class="project-meta">
-          <div class="project-meta-left">
-            <p class="project-tag">Wishlist Now · Steam</p>
-            <h3>Keep It Checked</h3>
-          </div>
-          <a href="https://store.steampowered.com/app/4870720/Keep_It_Checked/"
-             target="_blank" class="btn-fill sm">Wishlist on Steam</a>
+          <h3>Keep It Checked</h3>
+          <a href="https://store.steampowered.com/app/4870720/Keep_It_Checked/" target="_blank" rel="noopener" class="btn-fill sm">Wishlist on Steam</a>
         </div>
       </article>
 
-      
       <!-- Tinker's Nook -->
       <article class="project-card">
-        <div class="project-thumb project-thumb-soon">
-          <img src="assets/games/tinkersnook.png" alt="Tinker's Nook">
-          <div class="thumb-overlay thumb-overlay-soon">
-            <span>Coming Soon</span>
-          </div>
+        <div class="project-thumb">
+          <img src="assets/games/tinkersnook.webp" alt="Tinker's Nook key art" width="748" height="896" loading="lazy">
+          <span class="badge badge-soon">Wishlist now</span>
         </div>
         <div class="project-meta">
-          <div class="project-meta-left">
-            <p class="project-tag">Wishlist Now · Steam</p>
-            <h3>Tinker's Nook</h3>
-          </div>
-          <a href="https://store.steampowered.com/app/5192760/Tinkers_Nook/"
-             target="_blank" class="btn-fill sm">Wishlist on Steam</a>
+          <h3>Tinker's Nook</h3>
+          <a href="https://store.steampowered.com/app/5192760/Tinkers_Nook/" target="_blank" rel="noopener" class="btn-fill sm">Wishlist on Steam</a>
         </div>
       </article>
 
-      <!-- Take The Shot -->
+      <!-- Take That Shot -->
       <article class="project-card">
-        <div class="project-thumb project-thumb-soon">
-          <img src="assets/games/takethatshot.png" alt="Take That Shot">
-          <div class="thumb-overlay thumb-overlay-soon">
-            <span>Coming Soon</span>
-          </div>
+        <div class="project-thumb">
+          <img src="assets/games/takethatshot.webp" alt="Take That Shot key art" width="748" height="896" loading="lazy">
+          <span class="badge badge-soon">Wishlist now</span>
         </div>
         <div class="project-meta">
-          <div class="project-meta-left">
-            <p class="project-tag">Wishlist Now · Steam</p>
-            <h3>Take That Shot</h3>
-          </div>
-          <a href="https://store.steampowered.com/app/5191330/Take_That_Shot/"
-             target="_blank" class="btn-fill sm">Wishlist on Steam</a>
+          <h3>Take That Shot</h3>
+          <a href="https://store.steampowered.com/app/5191330/Take_That_Shot/" target="_blank" rel="noopener" class="btn-fill sm">Wishlist on Steam</a>
         </div>
       </article>
 
       <!-- Endless Check -->
       <article class="project-card">
-        <div class="project-thumb project-thumb-soon">
-          <img src="assets/games/endlesscheck.png" alt="Endless Check">
-          <div class="thumb-overlay thumb-overlay-soon">
-            <span>Coming Soon</span>
-          </div>
+        <div class="project-thumb">
+          <img src="assets/games/endlesscheck.webp" alt="Endless Check key art" width="748" height="896" loading="lazy">
+          <span class="badge badge-muted">Coming soon</span>
         </div>
         <div class="project-meta">
-          <div class="project-meta-left">
-            <p class="project-tag">Coming Soon · Steam</p>
-            <h3>Endless Check</h3>
-          </div>
-          <span class="btn-fill sm btn-disabled">Wishlist Soon</span>
+          <h3>Endless Check</h3>
+          <span class="btn-fill sm btn-disabled" aria-disabled="true">Wishlist Soon</span>
         </div>
       </article>
-
 
     </div>
   </section>
@@ -185,6 +201,13 @@
         <p>We are an independent game studio driven by a genuine love for games. Our goal is to create the kinds of games we love to play ourselves — titles that feel well-crafted, memorable, and worth your time.</p>
         <p>We focus on strong core mechanics, thoughtful design, and meaningful player experiences. Rather than chasing trends, we build games with character, clarity, and care.</p>
         <p>As an indie team, we value creativity, iteration, and hands-on craft. Great games come from small teams with a sharp vision and real passion for what they make.</p>
+
+        <div class="cities" aria-label="Where the team works">
+          <span class="city"><i aria-hidden="true"></i>Istanbul</span>
+          <span class="city-line" aria-hidden="true"></span>
+          <span class="city"><i aria-hidden="true"></i>Berlin</span>
+        </div>
+        <p class="cities-note">Five people, two cities, one shared build. Everyone on the team studied game design.</p>
       </div>
 
       <div class="about-values">
@@ -224,8 +247,13 @@
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">Independent</span>
+        <span class="stat-num">5</span>
+        <span class="stat-label">Team Members</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Cities</span>
       </div>
     </div>
   </section>
@@ -242,10 +270,10 @@
     <div class="press-card">
       <div class="press-card-inner">
         <h3>Press Kit</h3>
-        <p>Official logos, screenshots, trailers and press materials will be available here. Check back soon.</p>
+        <p>Official logos, screenshots and press materials — everything you need to cover our games.</p>
         <a href="assets/presskit/triarch-presskit.zip" download class="btn-fill">Download Press Kit</a>
       </div>
-      <div class="press-bg-text">PRESS</div>
+      <div class="press-bg-text" aria-hidden="true">PRESS</div>
     </div>
   </section>
 
@@ -263,26 +291,26 @@
       <div class="contact-box">
         <h3>Follow Us</h3>
         <ul class="social-list">
-          <li><a href="https://www.instagram.com/triarchinteractive/" target="_blank" class="social-link">
-            <img src="assets/icons/instagram.png" alt=""> <span>Instagram</span> <em>↗</em>
+          <li><a href="https://www.instagram.com/triarchinteractive/" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/icons/instagram.png" alt=""> <span>Instagram</span> <em aria-hidden="true">↗</em>
           </a></li>
-          <li><a href="https://www.linkedin.com/company/triarch-interactive/" target="_blank" class="social-link">
-            <img src="assets/icons/linkedin.png" alt=""> <span>LinkedIn</span> <em>↗</em>
+          <li><a href="https://www.linkedin.com/company/triarch-interactive/" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/icons/linkedin.png" alt=""> <span>LinkedIn</span> <em aria-hidden="true">↗</em>
           </a></li>
-          <li><a href="https://tiktok.com/@triarchinteractive" target="_blank" class="social-link">
-            <img src="assets/icons/tiktok.png" alt=""> <span>TikTok</span> <em>↗</em>
+          <li><a href="https://tiktok.com/@triarchinteractive" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/icons/tiktok.png" alt=""> <span>TikTok</span> <em aria-hidden="true">↗</em>
           </a></li>
-          <li><a href="https://store.steampowered.com/publisher/triarchinteractive" target="_blank" class="social-link">
-            <img src="assets/icons/steam.png" alt=""> <span>Steam</span> <em>↗</em>
+          <li><a href="https://store.steampowered.com/publisher/triarchinteractive" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/icons/steam.png" alt=""> <span>Steam</span> <em aria-hidden="true">↗</em>
           </a></li>
-          <li><a href="https://x.com/TriarchInt" target="_blank" class="social-link">
-            <img src="assets/icons/x.png" alt=""> <span>X / Twitter</span> <em>↗</em>
+          <li><a href="https://x.com/TriarchInt" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/icons/x.png" alt=""> <span>X / Twitter</span> <em aria-hidden="true">↗</em>
           </a></li>
-          <li><a href="https://www.reddit.com/r/TriarchInteractive/" target="_blank" class="social-link">
-            <img src="assets/icons/reddit.png" alt=""> <span>Reddit</span> <em>↗</em>
+          <li><a href="https://www.reddit.com/r/TriarchInteractive/" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/icons/reddit.png" alt=""> <span>Reddit</span> <em aria-hidden="true">↗</em>
           </a></li>
-          <li><a href="https://www.youtube.com/@TriarchInteractive" target="_blank" class="social-link">
-            <img src="assets/icons/youtube.png" alt=""> <span>YouTube</span> <em>↗</em>
+          <li><a href="https://www.youtube.com/@TriarchInteractive" target="_blank" rel="noopener" class="social-link">
+            <img src="assets/icons/youtube.png" alt=""> <span>YouTube</span> <em aria-hidden="true">↗</em>
           </a></li>
         </ul>
       </div>
@@ -298,15 +326,18 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── FOOTER ─────────────────────────────────────── -->
   <footer>
     <div class="footer-inner">
       <span class="footer-logo">TRIARCH INTERACTIVE</span>
-      <span class="footer-copy">© 2026 All rights reserved.</span>
-      <a href="#" class="footer-top">↑ Top</a>
+      <span class="footer-copy">© 2026 Triarch Interactive. All rights reserved.</span>
+      <a href="#top" class="footer-top">↑ Top</a>
     </div>
   </footer>
 
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}.hero-content{opacity:1!important}</style></noscript>
   <script src="js/main.js"></script>
 
 </body>

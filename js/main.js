@@ -2,6 +2,8 @@
    TRIARCH INTERACTIVE — main.js
 ═══════════════════════════════════════════════════════════ */
 
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ── THEME TOGGLE ────────────────────────────────────────── */
 const themeToggle = document.getElementById('themeToggle');
 
@@ -10,46 +12,54 @@ if (themeToggle) {
     const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
     const next = current === 'light' ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('triarch-theme', next);
+    try { localStorage.setItem('triarch-theme', next); } catch (e) {}
   });
 }
 
-/* ── PROGRESS BAR ────────────────────────────────────────── */
+/* ── SCROLL: PROGRESS BAR + HEADER SHRINK ────────────────── */
 const progressBar = document.getElementById('progressBar');
-
-window.addEventListener('scroll', () => {
-  const scrollTop    = document.documentElement.scrollTop;
-  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  progressBar.style.width = (scrollTop / scrollHeight * 100) + '%';
-});
-
-/* ── HEADER SHRINK ON SCROLL ─────────────────────────────── */
 const header = document.getElementById('site-header');
+let scrollQueued = false;
+
+function onScroll() {
+  scrollQueued = false;
+  const doc = document.documentElement;
+  const max = doc.scrollHeight - doc.clientHeight;
+  progressBar.style.width = (max > 0 ? (doc.scrollTop / max) * 100 : 0) + '%';
+  header.classList.toggle('scrolled', window.scrollY > 60);
+}
 
 window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 60);
-});
+  if (!scrollQueued) {
+    scrollQueued = true;
+    requestAnimationFrame(onScroll);
+  }
+}, { passive: true });
+
+onScroll();
 
 /* ── SCROLL REVEAL ───────────────────────────────────────── */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
+      revealObserver.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.1
-});
+}, { threshold: 0.08 });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ── SMOOTH SCROLL (NAV LINKS) ───────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const id = this.getAttribute('href');
+    if (id.length < 2) return;
+    const target = document.querySelector(id);
     if (target) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth' });
+      target.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      history.replaceState(null, '', id);
     }
   });
 });

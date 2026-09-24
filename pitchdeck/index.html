@@ -3,35 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Triarch Interactive — Pitch Deck</title>
+  <title>Triarch Interactive — Investor Deck</title>
+  <meta name="description" content="Investor overview of Triarch Interactive, an independent game studio from Istanbul and Berlin.">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a0a0d">
   <link rel="icon" type="image/png" href="../assets/companylogo.png">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="deck.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
   <script>
     (function () {
-      var saved = localStorage.getItem('triarch-theme');
+      var saved = null;
+      try { saved = localStorage.getItem('triarch-theme'); } catch (e) {}
       var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
       document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.classList.add('js');
     })();
   </script>
 </head>
 <body class="deck-body">
 
+  <a class="skip-link" href="#deckScroller">Skip to slides</a>
   <div class="deck-progress" id="deckProgress"></div>
 
   <div class="deck-topbar">
-    <a href="../index.html" class="deck-topbar-logo">
-      <img src="../assets/companylogo.png" alt="">
+    <a href="../index.html" class="deck-topbar-logo" aria-label="Triarch Interactive website">
+      <img src="../assets/companylogo.png" alt="" width="24" height="24">
       <span>TRIARCH INTERACTIVE</span>
     </a>
     <div class="deck-topbar-right">
       <span class="deck-topbar-tag">Investor Deck · 2026</span>
-      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch between light and dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
     </div>
   </div>
@@ -39,48 +45,83 @@
   <!-- ── SIDEBAR NAV ─────────────────────────────────────── -->
   <nav class="deck-sidebar" id="deckSidebar" aria-label="Slide navigation">
     <ol class="deck-sidebar-list" id="deckSidebarList">
-      <li data-target="0"><span class="dot"></span><span class="lbl"><em>01</em>Cover</span></li>
-      <li data-target="1"><span class="dot"></span><span class="lbl"><em>02</em>Opportunity</span></li>
-      <li data-target="2"><span class="dot"></span><span class="lbl"><em>03</em>Team</span></li>
-      <li data-target="3"><span class="dot"></span><span class="lbl"><em>04</em>Proven Execution</span></li>
-      <li data-target="4"><span class="dot"></span><span class="lbl"><em>05</em>Traction</span></li>
-      <li data-target="5"><span class="dot"></span><span class="lbl"><em>06</em>Growth</span></li>
-      <li data-target="6"><span class="dot"></span><span class="lbl"><em>07</em>Pipeline</span></li>
-      <li data-target="7"><span class="dot"></span><span class="lbl"><em>08</em>Why It Works</span></li>
-      <li data-target="8"><span class="dot"></span><span class="lbl"><em>09</em>Roadmap</span></li>
-      <li data-target="9"><span class="dot"></span><span class="lbl"><em>10</em>The Ask</span></li>
-      <li data-target="10"><span class="dot"></span><span class="lbl"><em>11</em>Use of Funds</span></li>
-      <li data-target="11"><span class="dot"></span><span class="lbl"><em>12</em>Contact</span></li>
+      <li><button type="button" data-target="0"><span class="dot"></span><span class="lbl"><em>01</em>Cover</span></button></li>
+      <li><button type="button" data-target="1"><span class="dot"></span><span class="lbl"><em>02</em>Opportunity</span></button></li>
+      <li><button type="button" data-target="2"><span class="dot"></span><span class="lbl"><em>03</em>Team</span></button></li>
+      <li><button type="button" data-target="3"><span class="dot"></span><span class="lbl"><em>04</em>Proven Execution</span></button></li>
+      <li><button type="button" data-target="4"><span class="dot"></span><span class="lbl"><em>05</em>Traction</span></button></li>
+      <li><button type="button" data-target="5"><span class="dot"></span><span class="lbl"><em>06</em>Growth</span></button></li>
+      <li><button type="button" data-target="6"><span class="dot"></span><span class="lbl"><em>07</em>Pipeline</span></button></li>
+      <li><button type="button" data-target="7"><span class="dot"></span><span class="lbl"><em>08</em>Why It Works</span></button></li>
+      <li><button type="button" data-target="8"><span class="dot"></span><span class="lbl"><em>09</em>Roadmap</span></button></li>
+      <li><button type="button" data-target="9"><span class="dot"></span><span class="lbl"><em>10</em>The Ask</span></button></li>
+      <li><button type="button" data-target="10"><span class="dot"></span><span class="lbl"><em>11</em>Use of Funds</span></button></li>
+      <li><button type="button" data-target="11"><span class="dot"></span><span class="lbl"><em>12</em>Contact</span></button></li>
     </ol>
     <div class="deck-sidebar-arrows">
-      <button type="button" class="deck-arrow-btn" id="arrowUp" aria-label="Previous slide">↑</button>
-      <button type="button" class="deck-arrow-btn" id="arrowDown" aria-label="Next slide">↓</button>
+      <button type="button" class="deck-arrow-btn" id="arrowUp" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 15 6-6 6 6"></path></svg>
+      </button>
+      <button type="button" class="deck-arrow-btn" id="arrowDown" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+      </button>
     </div>
   </nav>
 
-  <div class="deck-scroller" id="deckScroller">
+  <main class="deck-scroller" id="deckScroller" tabindex="-1">
 
     <!-- 01 — COVER -->
-    <section class="slide slide-cover">
+    <section class="slide slide-cover" id="cover">
       <div class="deco deco-a"></div>
-      <div class="deco deco-b"></div>
-      <p class="slide-eyebrow">Investor Overview · 2026</p>
-      <h1 class="deck-title">TRIARCH<br><span class="outline">INTERACTIVE</span></h1>
-      <p class="slide-tagline">We Make Games Worth Playing.</p>
-      <p class="slide-sub">An independent game studio building a portfolio of sharp, character-driven titles — one shipped, four in motion.</p>
+      <div class="cover-art" aria-hidden="true">
+        <div class="art-col">
+          <div class="art-track">
+            <img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896">
+            <img src="../assets/games/takethatshot.webp" alt="" width="748" height="896">
+            <img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896">
+            <img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896">
+            <img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896">
+            <img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896">
+            <img src="../assets/games/takethatshot.webp" alt="" width="748" height="896">
+            <img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896">
+            <img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896">
+            <img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896">
+          </div>
+        </div>
+        <div class="art-col art-col-rev">
+          <div class="art-track">
+            <img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896">
+            <img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896">
+            <img src="../assets/games/takethatshot.webp" alt="" width="748" height="896">
+            <img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896">
+            <img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896">
+            <img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896">
+            <img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896">
+            <img src="../assets/games/takethatshot.webp" alt="" width="748" height="896">
+            <img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896">
+            <img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896">
+          </div>
+        </div>
+      </div>
+      <div class="cover-copy">
+        <p class="slide-eyebrow rv">Investor Overview · 2026</p>
+        <h1 class="deck-title rv">TRIARCH<br><span class="outline">INTERACTIVE</span></h1>
+        <p class="slide-tagline rv">We Make Games Worth Playing.</p>
+        <p class="slide-sub rv">An independent game studio from Istanbul and Berlin — one game shipped, four more in development.</p>
+      </div>
     </section>
 
     <!-- 02 — THE OPPORTUNITY -->
-    <section class="slide">
+    <section class="slide" id="opportunity">
       <div class="deco deco-a"></div>
-      <p class="label">The Opportunity</p>
-      <h2>A Small Team.<br>A Real Pipeline.</h2>
+      <p class="label rv">The Opportunity</p>
+      <h2 class="rv">A Small Team.<br>A Real Pipeline.</h2>
       <div class="two-col">
-        <div class="col-text">
-          <p>Triarch Interactive is a lean, 5-person independent studio that already shipped a commercial title and is now running four more in parallel development — across distinct genres, all self-published on Steam.</p>
-          <p>We're not pitching an idea. We're pitching a working studio with a live catalog, a real audience funnel, and a clear plan to scale marketing spend into that momentum.</p>
+        <div class="col-text rv">
+          <p>Triarch Interactive is a lean, 5-person independent studio that has already shipped a commercial title and is running four more in parallel development — across distinct genres, all self-published on Steam.</p>
+          <p>We're not pitching an idea. We're pitching a working studio with a live catalog, a real audience funnel, and a clear plan to scale marketing into that momentum.</p>
         </div>
-        <div class="stat-block">
+        <div class="stat-block rv">
           <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">Game Shipped</span></div>
           <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">In Development</span></div>
           <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">Independent</span></div>
@@ -89,149 +130,184 @@
     </section>
 
     <!-- 03 — TEAM -->
-    <section class="slide">
+    <section class="slide" id="team">
       <div class="deco deco-b"></div>
-      <p class="label">The Team</p>
-      <h2>5 People.<br>Every Discipline Covered.</h2>
-      <p class="section-desc-left">A small, hands-on, remote-first team — no outsourcing the soul of the project.</p>
-      <div class="fact-chip-row">
-        <span class="fact-chip">Istanbul &amp; Berlin</span>
-        <span class="fact-chip">Game Design Graduates</span>
-        <span class="fact-chip">Remote-First</span>
-      </div>
-      <div class="team-grid">
-        <div class="team-card">
-          <span class="team-num">02</span>
-          <h4>Development &amp; Design</h4>
-          <p>Led by co-founder <strong>Ali Yiğit Yılmaz</strong>, who works hands-on across game design, development, and studio operations, alongside a second developer/designer. Both studied Game Design.</p>
+      <p class="label rv">The Team</p>
+      <h2 class="rv">5 People.<br>Every Discipline Covered.</h2>
+      <p class="section-desc-left rv">A small, hands-on, remote-first team. Everyone studied game design — a few of us are still finishing our degrees.</p>
+
+      <div class="founder-card rv">
+        <div class="avatar" aria-hidden="true">AY</div>
+        <div>
+          <p class="founder-role">Co-Founder &amp; Developer</p>
+          <h3>Ali Yiğit Yılmaz</h3>
+          <p>Works hands-on across game design, development, and studio operations.</p>
         </div>
-        <div class="team-card">
-          <span class="team-num">03</span>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card rv">
+          <div class="people" role="img" aria-label="Two people"><i></i><i></i></div>
+          <h4>Development &amp; Design</h4>
+          <p>Two people covering game design and engineering, from core mechanics to shipped builds.</p>
+        </div>
+        <div class="team-card rv">
+          <div class="people people-alt" role="img" aria-label="Three people"><i></i><i></i><i></i></div>
           <h4>Art — 3D &amp; 2D</h4>
-          <p>Three artists spanning 3D art and 2D/UI art, giving every title a distinct, polished visual identity without external contractors. All hold or are completing Game Design degrees.</p>
+          <p>Three artists across 3D and 2D/UI, giving every title a distinct visual identity without outside contractors.</p>
+        </div>
+        <div class="team-card rv">
+          <div class="cities-mini" aria-hidden="true"><span>IST</span><b></b><span>BER</span></div>
+          <h4>Istanbul &amp; Berlin</h4>
+          <p>One team working across two cities, building together remotely.</p>
         </div>
       </div>
     </section>
 
     <!-- 04 — PROVEN EXECUTION -->
-    <section class="slide">
+    <section class="slide" id="execution">
       <div class="deco deco-a"></div>
-      <p class="label">Proven Execution</p>
-      <h2>Keep It Contained</h2>
-      <p class="section-desc-left">Our first shipped title on Steam — built, launched, and sold entirely on organic reach, with zero paid marketing spend to date.</p>
-      <div class="metric-row">
-        <div class="metric"><span class="metric-num">200+</span><span class="metric-label">Total Units Sold</span></div>
-        <div class="metric"><span class="metric-num">34m</span><span class="metric-label">Median Playtime</span></div>
-        <div class="metric"><span class="metric-num">$0</span><span class="metric-label">Marketing Spend</span></div>
+      <div class="split">
+        <div class="split-art rv">
+          <img src="../assets/games/keepitcontained.webp" alt="Keep It Contained key art" width="748" height="896">
+        </div>
+        <div class="split-copy">
+          <p class="label rv">Proven Execution</p>
+          <h2 class="rv">Keep It Contained</h2>
+          <p class="section-desc-left rv">Our first title, live on Steam — designed, built, launched and sold entirely on organic reach, with no paid marketing.</p>
+          <div class="metric-grid metric-grid-3 rv">
+            <div class="metric"><span class="metric-num" data-count="117">117</span><span class="metric-label">Units Sold</span></div>
+            <div class="metric"><span class="metric-num" data-count="34" data-suffix=" min">34 min</span><span class="metric-label">Median Playtime</span></div>
+            <div class="metric"><span class="metric-num">$0</span><span class="metric-label">Marketing Spend</span></div>
+          </div>
+          <p class="metric-footnote rv">A shipped commercial release proves we can design, build and launch a complete game end-to-end — the foundation every upcoming title builds on, now with marketing behind it.</p>
+          <a href="https://store.steampowered.com/app/4251090/Keep_It_Contained/" target="_blank" rel="noopener" class="slide-link rv">See it on Steam ↗</a>
+        </div>
       </div>
-      <p class="metric-footnote">A first commercial release proves the studio can design, build, and ship a complete game end-to-end — the foundation the next four titles build on with real marketing behind them.</p>
     </section>
 
     <!-- 05 — TRACTION -->
-    <section class="slide">
+    <section class="slide" id="traction">
       <div class="deco deco-b"></div>
-      <p class="label">Traction</p>
-      <h2>Organic Reach,<br>Before Any Ad Spend.</h2>
-      <div class="metric-row">
-        <div class="metric"><span class="metric-num">1.28M</span><span class="metric-label">Steam Store Impressions</span></div>
-        <div class="metric"><span class="metric-num">69.8K</span><span class="metric-label">Store Page Visits</span></div>
-        <div class="metric"><span class="metric-num">4–5K</span><span class="metric-label">Current Wishlists (all titles)</span></div>
+      <p class="label rv">Traction</p>
+      <h2 class="rv">Organic Reach,<br>Before Any Ad Spend.</h2>
+      <div class="metric-grid metric-grid-4 rv">
+        <div class="metric"><span class="metric-num" data-count="1.28" data-decimals="2" data-suffix="M">1.28M</span><span class="metric-label">Steam Store Impressions</span></div>
+        <div class="metric"><span class="metric-num" data-count="69.8" data-decimals="1" data-suffix="K">69.8K</span><span class="metric-label">Store Page Visits</span></div>
+        <div class="metric"><span class="metric-num" data-count="5.4" data-decimals="1" data-suffix="%">5.4%</span><span class="metric-label">Impression → Visit Rate</span></div>
+        <div class="metric"><span class="metric-num">4–5K</span><span class="metric-label">Wishlists · All Titles</span></div>
       </div>
-      <p class="metric-footnote">All of this happened without a marketing budget. Two upcoming titles are registered for the next Steam Next Fest — we expect this to meaningfully accelerate wishlist growth heading into 2027.</p>
+      <p class="metric-footnote rv">Steamworks traffic data across all our products, 23 Dec 2025 – 14 Sep 2026. Two upcoming titles are registered for the next Steam Next Fest, which we expect to accelerate wishlist growth heading into 2027.</p>
     </section>
 
     <!-- 06 — GROWTH TRAJECTORY -->
-    <section class="slide">
+    <section class="slide" id="growth">
       <div class="deco deco-a"></div>
-      <p class="label">Growth Trajectory</p>
-      <h2>Where This Is<br>Heading.</h2>
-      <p class="section-desc-left">We're especially confident in <strong>Tinker's Nook</strong> and <strong>Take That Shot</strong> — both are entering Steam Next Fest, and with a dedicated marketing push behind them, we're targeting a significant step up in combined wishlists.</p>
-      <div class="growth-bar-wrap">
-        <div class="growth-row">
-          <span class="growth-tag">Today</span>
-          <div class="growth-track"><div class="growth-fill" style="width:22%"></div></div>
-          <span class="growth-value">~4–5K</span>
+      <p class="label rv">Growth Trajectory</p>
+      <h2 class="rv">Where This Is<br>Heading.</h2>
+      <p class="section-desc-left rv">We're especially confident in <strong>Tinker's Nook</strong> and <strong>Take That Shot</strong>. Both enter Steam Next Fest, and with a dedicated marketing push behind them we're targeting a significant step up in combined wishlists.</p>
+
+      <div class="chart rv" role="img" aria-label="Projected combined wishlists: about 4.5 thousand today, targeting over 20 thousand after Next Fest">
+        <div class="chart-plot">
+          <span class="y" style="top:16%">20K</span>
+          <span class="y" style="top:34%">15K</span>
+          <span class="y" style="top:52%">10K</span>
+          <span class="y" style="top:70%">5K</span>
+          <span class="y" style="top:88%">0</span>
+          <svg viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" style="stop-color:var(--violet);stop-opacity:0.32"></stop>
+                <stop offset="1" style="stop-color:var(--violet);stop-opacity:0"></stop>
+              </linearGradient>
+            </defs>
+            <line class="gl" x1="0" y1="8" x2="100" y2="8"></line>
+            <line class="gl" x1="0" y1="17" x2="100" y2="17"></line>
+            <line class="gl" x1="0" y1="26" x2="100" y2="26"></line>
+            <line class="gl" x1="0" y1="35" x2="100" y2="35"></line>
+            <line class="gl gl-base" x1="0" y1="44" x2="100" y2="44"></line>
+            <path class="area" d="M14 36 C 40 35, 62 22, 88 8 L 88 44 L 14 44 Z" fill="url(#areaFill)"></path>
+            <path class="line" d="M14 36 C 40 35, 62 22, 88 8"></path>
+          </svg>
+          <div class="pt pt-now" style="left:14%;top:72%"><i></i><span>Today · ~4.5K</span></div>
+          <div class="pt pt-target" style="left:88%;top:16%"><i></i><span>Target · 20K+</span></div>
         </div>
-        <div class="growth-row">
-          <span class="growth-tag">Post–Next Fest Target</span>
-          <div class="growth-track"><div class="growth-fill growth-fill-target" style="width:100%"></div></div>
-          <span class="growth-value">20K+</span>
-        </div>
+        <span class="chart-tag">Projection</span>
       </div>
-      <p class="metric-footnote projection-note">Projection, not a current figure — based on Next Fest placement for two titles plus a planned marketing push. Included so investors see where the studio is aiming, not just where it stands today.</p>
+      <p class="metric-footnote projection-note rv">A projection, not a current figure — based on Next Fest placement for two titles plus a planned marketing push.</p>
     </section>
 
     <!-- 07 — PRODUCT PIPELINE -->
-    <section class="slide">
+    <section class="slide" id="pipeline">
       <div class="deco deco-b"></div>
-      <p class="label">Product Pipeline</p>
-      <h2>Four Titles,<br>In Motion.</h2>
-      <div class="pipeline-grid">
-        <div class="pipeline-card">
-          <p class="pipeline-tag">Available Now · Steam</p>
+      <p class="label rv">Product Pipeline</p>
+      <h2 class="rv">Five Games.<br>One Studio.</h2>
+      <div class="poster-row rv">
+        <a class="poster-card" href="https://store.steampowered.com/app/4251090/Keep_It_Contained/" target="_blank" rel="noopener">
+          <div class="poster-frame"><img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896" loading="lazy"><span class="badge badge-live">Live</span></div>
           <h4>Keep It Contained</h4>
-        </div>
-        <div class="pipeline-card">
-          <p class="pipeline-tag">Wishlist Now · Next Fest</p>
+        </a>
+        <a class="poster-card" href="https://store.steampowered.com/app/4870720/Keep_It_Checked/" target="_blank" rel="noopener">
+          <div class="poster-frame"><img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896" loading="lazy"><span class="badge badge-soon">Wishlist</span></div>
           <h4>Keep It Checked</h4>
-        </div>
-        <div class="pipeline-card">
-          <p class="pipeline-tag">Wishlist Now · Next Fest</p>
+        </a>
+        <a class="poster-card" href="https://store.steampowered.com/app/5192760/Tinkers_Nook/" target="_blank" rel="noopener">
+          <div class="poster-frame"><img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896" loading="lazy"><span class="badge badge-soon">Wishlist</span></div>
           <h4>Tinker's Nook</h4>
-        </div>
-        <div class="pipeline-card">
-          <p class="pipeline-tag">Wishlist Now</p>
+        </a>
+        <a class="poster-card" href="https://store.steampowered.com/app/5191330/Take_That_Shot/" target="_blank" rel="noopener">
+          <div class="poster-frame"><img src="../assets/games/takethatshot.webp" alt="" width="748" height="896" loading="lazy"><span class="badge badge-soon">Wishlist</span></div>
           <h4>Take That Shot</h4>
-        </div>
-        <div class="pipeline-card">
-          <p class="pipeline-tag">Coming Soon</p>
+        </a>
+        <div class="poster-card">
+          <div class="poster-frame"><img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896" loading="lazy"><span class="badge badge-muted">Coming soon</span></div>
           <h4>Endless Check</h4>
         </div>
       </div>
-      <a href="https://store.steampowered.com/developer/triarchinteractive" target="_blank" class="slide-link">View Our Full Steam Catalog ↗</a>
+      <a href="https://store.steampowered.com/developer/triarchinteractive" target="_blank" rel="noopener" class="slide-link rv">View our full Steam catalog ↗</a>
     </section>
 
     <!-- 08 — WHY IT WORKS -->
-    <section class="slide">
+    <section class="slide" id="why">
       <div class="deco deco-a"></div>
-      <p class="label">Why It Works</p>
-      <h2>Built To Be<br>Capital-Efficient.</h2>
+      <p class="label rv">Why It Works</p>
+      <h2 class="rv">Built To Be<br>Capital-Efficient.</h2>
       <div class="edge-grid">
-        <div class="edge-card">
-          <span class="edge-num">01</span>
+        <div class="edge-card rv">
+          <svg class="edge-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5-9-5Z"></path><path d="m3 13 9 5 9-5"></path></svg>
           <h4>Portfolio, Not One Bet</h4>
           <p>Five titles across different genres mean the studio's outcome never hinges on a single game succeeding.</p>
         </div>
-        <div class="edge-card">
-          <span class="edge-num">02</span>
+        <div class="edge-card rv">
+          <svg class="edge-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M14.8 9.2c-.4-.9-1.4-1.4-2.8-1.4-1.6 0-2.7.7-2.7 1.9 0 2.7 5.6 1.2 5.6 4 0 1.2-1.2 2-2.9 2-1.5 0-2.6-.6-3-1.6M12 6.5v1.3m0 8.4v1.3"></path></svg>
           <h4>Self-Published Economics</h4>
           <p>Every launch goes straight to Steam — no publisher cut, so a much larger share of revenue flows back into the studio.</p>
         </div>
-        <div class="edge-card">
-          <span class="edge-num">03</span>
+        <div class="edge-card rv">
+          <svg class="edge-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"></path></svg>
           <h4>Lean, Distributed Team</h4>
-          <p>Five people across Istanbul and Berlin have already shipped one title and are running four more in parallel — low overhead, high output.</p>
+          <p>Five people across Istanbul and Berlin have shipped one title and are running four more in parallel — low overhead, high output.</p>
         </div>
       </div>
     </section>
 
     <!-- 09 — ROADMAP -->
-    <section class="slide">
+    <section class="slide" id="roadmap">
       <div class="deco deco-b"></div>
-      <p class="label">Roadmap</p>
-      <h2>What's Next.</h2>
+      <p class="label rv">Roadmap</p>
+      <h2 class="rv">What's Next.</h2>
       <div class="roadmap-grid">
-        <div class="roadmap-card">
+        <div class="roadmap-card rv">
           <p class="roadmap-stage">Now</p>
           <h4>Build Momentum</h4>
-          <p>Keep It Contained live on Steam. Keep It Checked, Tinker's Nook, and Take That Shot in wishlist phase and entering Next Fest.</p>
+          <p>Keep It Contained is live on Steam. Keep It Checked, Tinker's Nook and Take That Shot are collecting wishlists and heading into Next Fest.</p>
         </div>
-        <div class="roadmap-card">
+        <div class="roadmap-card rv">
           <p class="roadmap-stage">Next</p>
           <h4>Ship &amp; Fund Growth</h4>
-          <p>Launch Keep It Checked, Tinker's Nook, and Take That Shot, backed by a funded marketing push from this raise.</p>
+          <p>Launch Keep It Checked, Tinker's Nook and Take That Shot, backed by a funded marketing push from this raise.</p>
         </div>
-        <div class="roadmap-card">
+        <div class="roadmap-card rv">
           <p class="roadmap-stage">2027</p>
           <h4>Expand the Catalog</h4>
           <p>Ship Endless Check and begin the studio's next titles, growing the team as scope requires.</p>
@@ -240,60 +316,74 @@
     </section>
 
     <!-- 10 — THE ASK -->
-    <section class="slide">
+    <section class="slide" id="ask">
       <div class="deco deco-a"></div>
-      <p class="label">The Ask</p>
-      <h2>$0 – $100K</h2>
-      <p class="section-desc-left">We're raising up to $100,000 to fund marketing and the next wave of development — turning proven organic traction into a funded growth push. Terms discussed directly based on investment size.</p>
+      <p class="label rv">The Ask</p>
+      <h2 class="rv">Up to <span class="accent">$100K</span></h2>
+      <p class="section-desc-left rv">We're raising up to $100,000 to turn proven organic traction into a funded growth push. We're open to any ticket size up to that amount — terms discussed directly.</p>
+      <div class="ask-points">
+        <div class="ask-point rv"><strong>40%</strong><span>Marketing &amp; advertising</span></div>
+        <div class="ask-point rv"><strong>30%</strong><span>Game development</span></div>
+        <div class="ask-point rv"><strong>30%</strong><span>Team, tools &amp; buffer</span></div>
+      </div>
+      <a href="mailto:triarchinteractive@gmail.com?subject=Triarch%20Interactive%20%E2%80%94%20Investor%20conversation" class="btn-fill rv ask-cta">Start a conversation</a>
     </section>
 
     <!-- 11 — USE OF FUNDS -->
-    <section class="slide">
+    <section class="slide" id="funds">
       <div class="deco deco-b"></div>
-      <p class="label">Use of Funds</p>
-      <h2>Where It Goes.</h2>
-      <div class="funds-grid">
-        <div class="funds-row">
-          <span class="funds-pct">40%</span>
-          <div class="funds-info"><h4>Marketing &amp; Advertising</h4><p>Paid UA, influencer/creator campaigns, and Next Fest push for our upcoming titles.</p></div>
+      <p class="label rv">Use of Funds</p>
+      <h2 class="rv">Where It Goes.</h2>
+      <div class="donut-wrap rv">
+        <div class="donut" role="img" aria-label="Use of funds: 40% marketing, 30% development, 15% team growth, 10% tools and equipment, 5% operating buffer">
+          <svg viewBox="0 0 42 42" aria-hidden="true">
+            <circle class="ring" cx="21" cy="21" r="15.915"></circle>
+            <circle class="seg" style="--o:25;--d:39 61;--so:1;--i:0" cx="21" cy="21" r="15.915"></circle>
+            <circle class="seg" style="--o:-15;--d:29 71;--so:.8;--i:1" cx="21" cy="21" r="15.915"></circle>
+            <circle class="seg" style="--o:-45;--d:14 86;--so:.6;--i:2" cx="21" cy="21" r="15.915"></circle>
+            <circle class="seg" style="--o:-60;--d:9 91;--so:.44;--i:3" cx="21" cy="21" r="15.915"></circle>
+            <circle class="seg" style="--o:-70;--d:4 96;--so:.3;--i:4" cx="21" cy="21" r="15.915"></circle>
+          </svg>
+          <div class="donut-center"><strong>$100K</strong><span>max raise</span></div>
         </div>
-        <div class="funds-row">
-          <span class="funds-pct">30%</span>
-          <div class="funds-info"><h4>Game Development</h4><p>Funding production on titles shipping through 2026 and into 2027.</p></div>
-        </div>
-        <div class="funds-row">
-          <span class="funds-pct">15%</span>
-          <div class="funds-info"><h4>Team Growth</h4><p>Bringing in additional hands as scope grows across active projects.</p></div>
-        </div>
-        <div class="funds-row">
-          <span class="funds-pct">10%</span>
-          <div class="funds-info"><h4>Tools &amp; Equipment</h4><p>Software licenses, hardware, and production tooling for the team.</p></div>
-        </div>
-        <div class="funds-row">
-          <span class="funds-pct">5%</span>
-          <div class="funds-info"><h4>Operating Buffer</h4><p>Runway cushion for unplanned costs during development.</p></div>
-        </div>
+        <ul class="funds-list">
+          <li><i style="--so:1"></i><b>40%</b><div><h4>Marketing &amp; Advertising</h4><p>Paid UA, creator campaigns and the Next Fest push for our upcoming titles.</p></div></li>
+          <li><i style="--so:.8"></i><b>30%</b><div><h4>Game Development</h4><p>Production on titles shipping through 2026 and into 2027.</p></div></li>
+          <li><i style="--so:.6"></i><b>15%</b><div><h4>Team Growth</h4><p>Additional hands as scope grows across active projects.</p></div></li>
+          <li><i style="--so:.44"></i><b>10%</b><div><h4>Tools &amp; Equipment</h4><p>Software licenses, hardware and production tooling.</p></div></li>
+          <li><i style="--so:.3"></i><b>5%</b><div><h4>Operating Buffer</h4><p>Runway cushion for unplanned costs.</p></div></li>
+        </ul>
       </div>
     </section>
 
     <!-- 12 — CONTACT -->
-    <section class="slide slide-contact">
+    <section class="slide slide-contact" id="contact">
       <div class="deco deco-a"></div>
-      <div class="deco deco-b"></div>
-      <p class="label">Let's Talk</p>
-      <h2>Get In Touch.</h2>
-      <a href="mailto:triarchinteractive@gmail.com" class="deck-email">triarchinteractive@gmail.com</a>
-      <div class="deck-social">
-        <a href="https://store.steampowered.com/publisher/triarchinteractive" target="_blank">Steam</a>
-        <a href="https://www.linkedin.com/company/triarch-interactive/" target="_blank">LinkedIn</a>
-        <a href="https://x.com/TriarchInt" target="_blank">X / Twitter</a>
-        <a href="https://www.instagram.com/triarchinteractive/" target="_blank">Instagram</a>
+      <p class="label rv">Let's Talk</p>
+      <h2 class="rv">Get In Touch.</h2>
+      <a href="mailto:triarchinteractive@gmail.com" class="deck-email rv">triarchinteractive@gmail.com</a>
+      <div class="deck-social rv">
+        <a href="https://store.steampowered.com/developer/triarchinteractive" target="_blank" rel="noopener">Steam</a>
+        <a href="https://www.linkedin.com/company/triarch-interactive/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/TriarchInt" target="_blank" rel="noopener">X / Twitter</a>
+        <a href="https://www.instagram.com/triarchinteractive/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@TriarchInteractive" target="_blank" rel="noopener">YouTube</a>
       </div>
-      <a href="../index.html" class="btn-line back-link">← Back to Site</a>
+      <a href="../index.html" class="btn-line back-link rv">← Back to Site</a>
+
+      <div class="poster-marquee" aria-hidden="true">
+        <div class="pm-track">
+          <img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/takethatshot.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896" loading="lazy">
+          <img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/takethatshot.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896" loading="lazy">
+          <img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/takethatshot.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896" loading="lazy">
+          <img src="../assets/games/keepitcontained.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/keepitchecked.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/tinkersnook.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/takethatshot.webp" alt="" width="748" height="896" loading="lazy"><img src="../assets/games/endlesscheck.webp" alt="" width="748" height="896" loading="lazy">
+        </div>
+      </div>
     </section>
 
-  </div>
+  </main>
 
+  <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
   <script src="deck.js"></script>
 </body>
 </html>
