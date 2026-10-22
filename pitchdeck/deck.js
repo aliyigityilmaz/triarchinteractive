@@ -42,13 +42,12 @@ if (!prefersReducedMotion) {
 function runCounters(slide) {
   if (prefersReducedMotion) return;
   slide.querySelectorAll('[data-count]').forEach((el) => {
-    const target = parseFloat(el.dataset.count);
     const duration = 1300;
     const start = performance.now();
     function tick(now) {
       const t = Math.min(1, (now - start) / duration);
       const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = formatCount(el, target * eased);
+      el.textContent = formatCount(el, parseFloat(el.dataset.count) * eased);
       if (t < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
@@ -156,4 +155,109 @@ document.addEventListener('keydown', (e) => {
 if (location.hash) {
   const target = slides.findIndex((s) => '#' + s.id === location.hash);
   if (target > 0) goToSlide(target, true);
+}
+
+/* ── STUDIO DATA: MOBILE SLIDE + COUNTS ──────────────────── */
+function make(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text) node.textContent = text;
+  return node;
+}
+
+function gameIcon(game, className) {
+  const img = make('img', className);
+  img.src = game.icon;
+  img.alt = '';
+  img.width = 256;
+  img.height = 256;
+  return img;
+}
+
+function renderMobileSlide(data) {
+  const live = document.getElementById('mobileLive');
+  if (!live || data.games.length === 0) return;
+
+  const ranked = TriarchData.byInstalls(data.games);
+  const top = ranked[0];
+  const others = ranked.slice(1, 4);
+
+  const feature = document.getElementById('mobileFeature');
+  if (top.icon) feature.appendChild(gameIcon(top, 'mobile-icon'));
+  const body = make('div', 'mobile-feature-body');
+  body.appendChild(make('p', 'mobile-eyebrow', top.minInstalls > 0 ? 'Most downloaded' : 'Live on Google Play'));
+  body.appendChild(make('h3', null, top.title));
+  if (top.summary) body.appendChild(make('p', 'mobile-summary', top.summary));
+
+  const chips = make('ul', 'mobile-chips');
+  if (top.genre) chips.appendChild(make('li', null, top.genre));
+  if (top.free) chips.appendChild(make('li', null, 'Free to play'));
+  if (top.minInstalls > 0) chips.appendChild(make('li', 'hl', top.installs + ' installs'));
+  if (top.score && top.ratings > 0) chips.appendChild(make('li', 'hl', top.score.toFixed(1) + ' ★ · ' + top.ratings + ' ratings'));
+  body.appendChild(chips);
+
+  const link = make('a', 'slide-link', 'View on Google Play ↗');
+  link.href = top.url;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  body.appendChild(link);
+  feature.appendChild(body);
+
+  const list = document.getElementById('mobileList');
+  others.forEach((game) => {
+    const item = make('li');
+    const a = make('a');
+    a.href = game.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    if (game.icon) a.appendChild(gameIcon(game, 'mobile-list-icon'));
+    const text = make('span');
+    text.appendChild(make('b', null, game.title));
+    const detail = [game.genre, game.minInstalls > 0 ? game.installs + ' installs' : null].filter(Boolean).join(' · ');
+    if (detail) text.appendChild(make('em', null, detail));
+    a.appendChild(text);
+    item.appendChild(a);
+    list.appendChild(item);
+  });
+
+  live.classList.toggle('is-solo', others.length === 0);
+  live.hidden = false;
+}
+
+function applyStudioCounts(counts) {
+  document.getElementById('mobileLink').href = counts.developerUrl;
+  const note = document.getElementById('mobileNote');
+  if (counts.androidInDevelopment > 0) {
+    note.textContent = counts.androidInDevelopment + ' more mobile ' + (counts.androidInDevelopment === 1 ? 'title is' : 'titles are') +
+      ' in testing or development. Our mobile games are free to play, supported by optional rewarded ads.';
+  }
+  document.querySelectorAll('[data-bind]').forEach((node) => {
+    const value = counts[node.dataset.bind];
+    if (value === undefined) return;
+    node.dataset.count = value;
+    const slide = node.closest('.slide');
+    if (prefersReducedMotion || (slide && slide.classList.contains('in-view'))) node.textContent = formatCount(node, value);
+  });
+}
+
+if (window.TriarchData) {
+  TriarchData.load('../').then((data) => {
+    renderMobileSlide(data);
+    if (data.counts) applyStudioCounts({ ...data.counts, developerUrl: data.developerUrl });
+  });
+}
+
+/* ── PRINT / PDF EXPORT ──────────────────────────────────── */
+function prepareForPrint() {
+  slides.forEach((slide) => slide.classList.add('in-view'));
+  counters.forEach((el) => { el.textContent = formatCount(el, parseFloat(el.dataset.count)); });
+}
+
+if (window.matchMedia('print').matches) prepareForPrint();
+window.addEventListener('beforeprint', prepareForPrint);
+if (window.matchMedia) {
+  const printQuery = window.matchMedia('print');
+  const printListener = (e) => { if (e.matches) prepareForPrint(); };
+  if (printQuery.addEventListener) printQuery.addEventListener('change', printListener);
+  else if (printQuery.addListener) printQuery.addListener(printListener);
 }

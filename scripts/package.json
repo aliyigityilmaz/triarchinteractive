@@ -1,0 +1,9 @@
+{
+  "name": "triarch-site-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Maintenance scripts for triarchinteractive.com (not part of the published site).",
+  "dependencies": {
+    "google-play-scraper": "10.1.4"
+  }
+}

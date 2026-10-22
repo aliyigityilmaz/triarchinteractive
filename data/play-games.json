@@ -1,0 +1,23 @@
+{
+  "developerUrl": "https://play.google.com/store/apps/developer?id=Triarch+Interactive",
+  "games": [
+    {
+      "id": "com.triarchinteractive.tinyislandrescue",
+      "title": "Tiny Island Rescue",
+      "url": "https://play.google.com/store/apps/details?id=com.triarchinteractive.tinyislandrescue",
+      "icon": "assets/play/com.triarchinteractive.tinyislandrescue.webp",
+      "iconKey": "HzPQ8jthmaGH60if16ihycRzx3IyTjOoca-S3N75K5OHwhrkib2sulO_8dW5ljEeoXSzrHMndpkm9ki11FxLVQ",
+      "summary": "Restore tiny islands, repair buildings, play 100 cozy levels. Relax & rebuild!",
+      "genre": "Arcade",
+      "free": true,
+      "adSupported": true,
+      "offersIAP": false,
+      "installs": "0+",
+      "minInstalls": 0,
+      "score": null,
+      "ratings": 0,
+      "released": "2026-10-09",
+      "updated": "2026-10-09"
+    }
+  ]
+}

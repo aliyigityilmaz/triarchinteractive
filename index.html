@@ -14,13 +14,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Triarch Interactive — Independent Game Studio</title>
-  <meta name="description" content="Triarch Interactive is an independent game studio from Istanbul and Berlin. We make games worth playing — Keep It Contained is out now on Steam, with four more in development.">
+  <meta name="description" content="Triarch Interactive is an independent game studio from Istanbul and Berlin. We make games worth playing — Keep It Contained is out now on Steam and Tiny Island Rescue on Google Play, with more in development.">
   <meta name="theme-color" content="#0a0a0d">
   <link rel="canonical" href="https://triarchinteractive.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Triarch Interactive">
   <meta property="og:title" content="Triarch Interactive — Independent Game Studio">
-  <meta property="og:description" content="We make games worth playing. Keep It Contained is out now on Steam — four more games in development.">
+  <meta property="og:description" content="We make games worth playing. Out now on Steam and Google Play — more games in development.">
   <meta property="og:url" content="https://triarchinteractive.com/">
   <meta property="og:image" content="https://triarchinteractive.com/assets/companylogo.png">
   <meta name="twitter:card" content="summary">
@@ -77,8 +77,8 @@
           <a href="#about" class="btn-line">Our Story</a>
         </div>
         <ul class="hero-meta" aria-label="Studio at a glance">
-          <li><strong>1</strong> released</li>
-          <li><strong>4</strong> in development</li>
+          <li><strong data-stat="released">2</strong> released</li>
+          <li><strong data-stat="inDevelopment">11</strong> in development</li>
           <li><strong>100%</strong> independent</li>
         </ul>
       </div>
@@ -110,7 +110,7 @@
         <p class="label">Released &amp; Upcoming</p>
         <h2>Our Games</h2>
       </div>
-      <p class="section-desc">A growing library of titles built with care.<br>Wishlist what's next on Steam.</p>
+      <p class="section-desc">A growing library of titles built with care.<br>On Steam and Google Play.</p>
     </div>
 
     <!-- Featured: released -->
@@ -133,7 +133,7 @@
       </div>
     </article>
 
-    <h3 class="subhead">In Development</h3>
+    <h3 class="subhead">PC · In Development</h3>
 
     <div class="projects-grid">
 
@@ -165,11 +165,11 @@
       <article class="project-card">
         <div class="project-thumb">
           <img src="assets/games/takethatshot.webp" alt="Take That Shot key art" width="748" height="896" loading="lazy">
-          <span class="badge badge-soon">Wishlist now</span>
+          <span class="badge badge-live">Demo live</span>
         </div>
         <div class="project-meta">
           <h3>Take That Shot</h3>
-          <a href="https://store.steampowered.com/app/5191330/Take_That_Shot/" target="_blank" rel="noopener" class="btn-fill sm">Wishlist on Steam</a>
+          <a href="https://store.steampowered.com/app/5443510/Take_That_Shot_Demo/" target="_blank" rel="noopener" class="btn-fill sm">Play the Demo</a>
         </div>
       </article>
 
@@ -185,6 +185,18 @@
         </div>
       </article>
 
+    </div>
+
+    <!-- Mobile: filled from data/play-games.json (refreshed automatically from Google Play) -->
+    <h3 class="subhead">Mobile · Google Play</h3>
+
+    <div class="projects-grid" id="mobileGrid">
+      <article class="project-card see-all-card">
+        <a href="https://play.google.com/store/apps/developer?id=Triarch+Interactive" target="_blank" rel="noopener" class="see-all-link">
+          <span class="see-all-title">All our mobile games</span>
+          <span class="btn-fill sm">See all on Google Play ↗</span>
+        </a>
+      </article>
     </div>
   </section>
 
@@ -238,12 +250,12 @@
 
     <div class="stats-row">
       <div class="stat">
-        <span class="stat-num">1</span>
-        <span class="stat-label">Game Released</span>
+        <span class="stat-num" data-stat="released">2</span>
+        <span class="stat-label">Games Released</span>
       </div>
       <div class="stat-divider"></div>
       <div class="stat">
-        <span class="stat-num">4</span>
+        <span class="stat-num" data-stat="inDevelopment">11</span>
         <span class="stat-label">In Development</span>
       </div>
       <div class="stat-divider"></div>
@@ -340,6 +352,7 @@
   </footer>
 
   <noscript><style>.reveal{opacity:1!important;transform:none!important}.hero-content{opacity:1!important}</style></noscript>
+  <script src="js/studio-data.js"></script>
   <script src="js/main.js"></script>
 
 </body>

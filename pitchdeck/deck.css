@@ -849,6 +849,142 @@
   color: var(--white);
 }
 
+/* ── MOBILE (GOOGLE PLAY) ────────────────────────────────── */
+.mobile-live {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: stretch;
+  margin-bottom: 26px;
+}
+
+.mobile-live[hidden] { display: none; }
+.mobile-live.is-solo { grid-template-columns: minmax(0, 680px); }
+
+.mobile-feature {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 26px;
+  background: var(--black2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.mobile-icon {
+  width: 128px;
+  height: 128px;
+  flex: none;
+  border-radius: 22%;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.mobile-eyebrow {
+  font-family: var(--font-cond);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: var(--violet-2);
+  margin-bottom: 6px;
+}
+
+.mobile-feature h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2.3rem;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.mobile-summary {
+  color: var(--white-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.mobile-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.mobile-chips li {
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-cond);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+.mobile-chips li.hl {
+  border-color: var(--violet);
+  color: var(--violet-2);
+}
+
+.mobile-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.mobile-list a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: var(--black2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.mobile-list a:hover {
+  border-color: var(--violet);
+  transform: translateX(4px);
+}
+
+.mobile-list-icon {
+  width: 48px;
+  height: 48px;
+  flex: none;
+  border-radius: 22%;
+}
+
+.mobile-list b {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+  line-height: 1.05;
+  color: var(--white);
+}
+
+.mobile-list em {
+  font-style: normal;
+  font-family: var(--font-cond);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
 /* ── WHY IT WORKS ────────────────────────────────────────── */
 .edge-grid {
   display: grid;
@@ -1212,6 +1348,7 @@ html:not(.js) .donut .seg { stroke-dasharray: var(--d); }
   }
   .poster-row::-webkit-scrollbar { display: none; }
   .poster-card { flex: 0 0 150px; scroll-snap-align: start; }
+  .mobile-live { grid-template-columns: 1fr; }
   .ask-points { grid-template-columns: 1fr; max-width: 420px; }
 }
 
@@ -1283,6 +1420,8 @@ html:not(.js) .donut .seg { stroke-dasharray: var(--d); }
   .chart .y { left: -38px; font-size: 0.72rem; }
   .chart .pt span { font-size: 0.74rem; }
   .founder-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px; }
+  .mobile-feature { flex-direction: column; align-items: flex-start; gap: 18px; padding: 20px; }
+  .mobile-feature h3 { font-size: 1.9rem; }
   .slide-contact { padding-bottom: 210px; }
 }
 
@@ -1333,8 +1472,74 @@ html:not(.js) .donut .seg { stroke-dasharray: var(--d); }
   .deck-body { overflow: visible; background: #fff; }
   .deck-topbar, .deck-sidebar, .deck-progress, .deco, .cover-art, .poster-marquee, .skip-link { display: none !important; }
   .deck-scroller { height: auto; overflow: visible; padding-left: 0; scroll-snap-type: none; }
-  .slide { min-height: 0; height: 720px; page-break-after: always; break-after: page; padding: 60px 64px; overflow: hidden; }
+  .slide {
+    min-height: 0; height: 720px; max-height: 720px;
+    page-break-after: always; page-break-inside: avoid;
+    break-after: page; break-inside: avoid;
+    padding: 46px 60px; overflow: hidden;
+  }
   .js .rv, .js .chart .line, .js .chart .area { opacity: 1 !important; transform: none !important; }
   .donut .seg { stroke-dasharray: var(--d) !important; }
   * { animation: none !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Compact everything so each slide's content fits the fixed 720px page */
+  .slide h2 { font-size: 2.5rem !important; margin-bottom: 18px !important; }
+  .slide#ask h2 { font-size: 4.6rem !important; margin-bottom: 18px !important; }
+  .label { margin-bottom: 8px !important; }
+  .section-desc-left { font-size: 0.86rem !important; line-height: 1.5 !important; margin-bottom: 18px !important; max-width: 100% !important; }
+  .slide-eyebrow { margin-bottom: 14px !important; }
+  .deck-title { font-size: 4.2rem !important; margin-bottom: 14px !important; }
+  .slide-tagline { font-size: 1rem !important; margin-bottom: 10px !important; }
+  .slide-sub { font-size: 0.86rem !important; }
+  .two-col, .split { gap: 30px !important; }
+  .founder-card { padding: 14px 22px !important; margin-bottom: 12px !important; gap: 16px !important; }
+  .avatar { width: 44px !important; height: 44px !important; font-size: 1.15rem !important; }
+  .founder-card h3 { font-size: 1.4rem !important; }
+  .founder-card p:last-child { font-size: 0.78rem !important; }
+  .founder-role { font-size: 0.66rem !important; }
+  .team-grid { gap: 12px !important; }
+  .team-card { padding: 14px 16px !important; }
+  .team-card h4 { font-size: 0.82rem !important; margin-bottom: 4px !important; }
+  .team-card p { font-size: 0.76rem !important; line-height: 1.4 !important; }
+  .people, .cities-mini { margin-bottom: 8px !important; height: 16px !important; }
+  .people i { width: 16px !important; height: 16px !important; }
+  .metric-grid { margin-bottom: 14px !important; }
+  .metric { padding: 14px 10px !important; gap: 4px !important; }
+  .metric-num { font-size: 1.8rem !important; }
+  .metric-label { font-size: 0.6rem !important; }
+  .metric-footnote { font-size: 0.78rem !important; line-height: 1.5 !important; margin-bottom: 8px !important; max-width: 100% !important; }
+  .split-art img { max-height: 420px !important; width: auto !important; }
+  .edge-grid, .roadmap-grid { gap: 12px !important; }
+  .edge-card, .roadmap-card { padding: 16px 18px !important; }
+  .edge-icon { width: 22px !important; height: 22px !important; margin-bottom: 8px !important; }
+  .edge-card h4, .roadmap-card h4 { font-size: 0.86rem !important; margin-bottom: 6px !important; }
+  .roadmap-card h4 { font-size: 1.1rem !important; }
+  .edge-card p, .roadmap-card p:last-child { font-size: 0.76rem !important; line-height: 1.4 !important; }
+  .chart { max-width: 640px !important; aspect-ratio: 2.6 / 1 !important; }
+  .poster-row { gap: 10px !important; margin-bottom: 14px !important; }
+  .poster-card h4 { font-size: 0.86rem !important; margin-top: 6px !important; }
+  .ask-points { gap: 8px !important; margin-bottom: 18px !important; }
+  .ask-point { padding: 10px 14px !important; }
+  .ask-point strong { font-size: 1.5rem !important; }
+  .ask-point span { font-size: 0.64rem !important; }
+  .donut-wrap { gap: 30px !important; }
+  .donut { max-width: 190px !important; }
+  .donut-center strong { font-size: 1.8rem !important; }
+  .funds-list li { padding: 6px 0 !important; }
+  .funds-list b { font-size: 1.2rem !important; }
+  .funds-list h4 { font-size: 0.76rem !important; }
+  .funds-list p { font-size: 0.68rem !important; line-height: 1.35 !important; }
+  .deck-email { font-size: 1.4rem !important; margin-bottom: 16px !important; }
+  .deck-social { margin-bottom: 16px !important; }
+  .slide-contact { padding-bottom: 46px !important; }
+  .mobile-live { gap: 14px !important; margin-bottom: 14px !important; }
+  .mobile-feature { padding: 16px 20px !important; gap: 18px !important; }
+  .mobile-icon { width: 84px !important; height: 84px !important; }
+  .mobile-feature h3 { font-size: 1.7rem !important; }
+  .mobile-summary { font-size: 0.8rem !important; line-height: 1.45 !important; margin-bottom: 8px !important; }
+  .mobile-chips { margin-bottom: 8px !important; }
+  .mobile-list { gap: 8px !important; }
+  .mobile-list a { padding: 6px 12px !important; }
+  .mobile-list-icon { width: 36px !important; height: 36px !important; }
+  .mobile-list b { font-size: 1rem !important; }
 }

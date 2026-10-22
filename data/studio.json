@@ -1,0 +1,6 @@
+{
+  "_note": "Hand-edited. Google Play games are counted automatically from play-games.json. Update these numbers when a title ships on Steam, or when a new title is started.",
+  "steam": { "released": 1, "inDevelopment": 4 },
+  "android": { "total": 8 },
+  "roblox": { "released": 0, "inDevelopment": 0 }
+}

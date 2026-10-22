@@ -50,6 +50,63 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+/* ── STUDIO DATA: MOBILE GAMES + COUNTS ──────────────────── */
+function el(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text) node.textContent = text;
+  return node;
+}
+
+function buildPlayCard(game) {
+  const card = el('article', 'project-card');
+
+  const thumb = el('a', 'project-thumb play-thumb');
+  thumb.href = game.url;
+  thumb.target = '_blank';
+  thumb.rel = 'noopener';
+  thumb.setAttribute('aria-label', game.title + ' on Google Play');
+  if (game.icon) {
+    thumb.style.setProperty('--icon', 'url("' + game.icon + '")');
+    const icon = el('img', 'play-icon');
+    icon.src = game.icon;
+    icon.alt = game.title + ' icon';
+    icon.width = 256;
+    icon.height = 256;
+    icon.loading = 'lazy';
+    thumb.appendChild(icon);
+  }
+  thumb.appendChild(el('span', 'badge badge-live', 'Available now'));
+
+  const meta = el('div', 'project-meta');
+  meta.appendChild(el('h3', null, game.title));
+  const button = el('a', 'btn-fill sm', 'Get on Google Play');
+  button.href = game.url;
+  button.target = '_blank';
+  button.rel = 'noopener';
+  meta.appendChild(button);
+
+  card.append(thumb, meta);
+  return card;
+}
+
+if (window.TriarchData) {
+  TriarchData.load('').then((data) => {
+    const grid = document.getElementById('mobileGrid');
+    if (grid) {
+      const tile = grid.querySelector('.see-all-card');
+      tile.querySelector('a').href = data.developerUrl;
+      TriarchData.newest(data.games).slice(0, 3).forEach((game) => grid.insertBefore(buildPlayCard(game), tile));
+    }
+    if (data.counts) {
+      document.querySelectorAll('[data-stat]').forEach((node) => {
+        const value = data.counts[node.dataset.stat];
+        if (value !== undefined) node.textContent = value;
+      });
+    }
+  });
+}
+
 /* ── SMOOTH SCROLL (NAV LINKS) ───────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
