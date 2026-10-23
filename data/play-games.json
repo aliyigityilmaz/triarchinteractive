@@ -20,6 +20,24 @@
       "updated": "2026-10-22"
     },
     {
+      "id": "com.triarchinteractive.gameshopkeeper",
+      "title": "Game Shop Keeper",
+      "url": "https://play.google.com/store/apps/details?id=com.triarchinteractive.gameshopkeeper",
+      "icon": "assets/play/com.triarchinteractive.gameshopkeeper.webp",
+      "iconKey": "3Y9bqsvoAzBw9jI52ded1WUgBOJBXIGVkY7XIjCUxNpOxmjXUWboCaKaLjwlvsDCQkk49vNV-FRqto8VIDnH",
+      "summary": "Run an anime toy & card shop: stock shelves, serve customers, grow your store!",
+      "genre": "Simulation",
+      "free": true,
+      "adSupported": true,
+      "offersIAP": false,
+      "installs": "0+",
+      "minInstalls": 0,
+      "score": null,
+      "ratings": 0,
+      "released": "2026-10-21",
+      "updated": "2026-10-21"
+    },
+    {
       "id": "com.triarchinteractive.idlepaludarium",
       "title": "Idle Paludarium",
       "url": "https://play.google.com/store/apps/details?id=com.triarchinteractive.idlepaludarium",
@@ -89,7 +107,7 @@
       "score": null,
       "ratings": 0,
       "released": "2026-10-09",
-      "updated": "2026-10-09"
+      "updated": "2026-10-23"
     }
   ]
 }
