@@ -342,6 +342,14 @@
   to   { transform: translateY(calc(-50% - 8px)); }
 }
 
+@keyframes coverFade {
+  0%   { opacity: 0; transform: translateY(-50%) scale(0.97); }
+  5%   { opacity: 1; transform: translateY(-50%) scale(1); }
+  20%  { opacity: 1; transform: translateY(-50%) scale(1); }
+  25%  { opacity: 0; transform: translateY(-50%) scale(1.02); }
+  100% { opacity: 0; transform: translateY(-50%) scale(1.02); }
+}
+
 .slide-eyebrow {
   font-family: var(--font-cond);
   font-size: 0.84rem;
@@ -1400,10 +1408,26 @@ html:not(.js) .donut .seg { stroke-dasharray: var(--d); }
 
   .cover-art {
     width: 100%;
-    opacity: 0.12;
-    justify-content: center;
-    padding: 0;
+    opacity: 0.2;
+    justify-content: space-around;
+    padding: 0 4%;
   }
+
+  /* left column: games cross-fade one after another; right column keeps scrolling in a loop */
+  .art-col:not(.art-col-rev) { position: relative; overflow: visible; }
+  .art-col:not(.art-col-rev) .art-track { display: block; animation: none; }
+  .art-col:not(.art-col-rev) .art-track img {
+    position: absolute;
+    left: 0; top: 50%;
+    opacity: 0;
+    animation: coverFade 20s ease-in-out infinite;
+  }
+  .art-col:not(.art-col-rev) .art-track img:nth-child(n+6) { display: none; }
+  .art-col:not(.art-col-rev) .art-track img:nth-child(2) { animation-delay: 4s; }
+  .art-col:not(.art-col-rev) .art-track img:nth-child(3) { animation-delay: 8s; }
+  .art-col:not(.art-col-rev) .art-track img:nth-child(4) { animation-delay: 12s; }
+  .art-col:not(.art-col-rev) .art-track img:nth-child(5) { animation-delay: 16s; }
+  .art-col-rev { margin-top: 0; }
 
   .cover-copy { max-width: none; }
   .deck-title { font-size: clamp(3.2rem, 14vw, 5.4rem); }
