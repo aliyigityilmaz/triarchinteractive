@@ -342,14 +342,6 @@
   to   { transform: translateY(calc(-50% - 8px)); }
 }
 
-@keyframes coverFade {
-  0%   { opacity: 0; transform: translateY(-50%) scale(0.97); }
-  5%   { opacity: 1; transform: translateY(-50%) scale(1); }
-  20%  { opacity: 1; transform: translateY(-50%) scale(1); }
-  25%  { opacity: 0; transform: translateY(-50%) scale(1.02); }
-  100% { opacity: 0; transform: translateY(-50%) scale(1.02); }
-}
-
 .slide-eyebrow {
   font-family: var(--font-cond);
   font-size: 0.84rem;
@@ -870,13 +862,29 @@
 .mobile-live.is-solo { grid-template-columns: minmax(0, 680px); }
 
 .mobile-feature {
-  display: flex;
+  display: grid;
   align-items: center;
-  gap: 26px;
   padding: 26px;
   background: var(--black2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
+}
+
+/* every game sits in the same cell, so the card keeps the height of the tallest one */
+.mobile-slide {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0s linear 0.6s;
+}
+
+.mobile-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease;
 }
 
 .mobile-icon {
@@ -959,6 +967,14 @@
   text-decoration: none;
   color: inherit;
   transition: border-color 0.25s, transform 0.25s;
+}
+
+.mobile-list li.is-entering { animation: listDrop 0.5s ease both; }
+.mobile-list li.is-leaving { opacity: 0; transform: translateY(14px); transition: opacity 0.4s ease, transform 0.4s ease; }
+
+@keyframes listDrop {
+  from { opacity: 0; transform: translateY(-18px); }
+  to   { opacity: 1; transform: none; }
 }
 
 .mobile-list a:hover {
@@ -1408,26 +1424,10 @@ html:not(.js) .donut .seg { stroke-dasharray: var(--d); }
 
   .cover-art {
     width: 100%;
-    opacity: 0.2;
-    justify-content: space-around;
-    padding: 0 4%;
+    opacity: 0.12;
+    justify-content: center;
+    padding: 0;
   }
-
-  /* left column: games cross-fade one after another; right column keeps scrolling in a loop */
-  .art-col:not(.art-col-rev) { position: relative; overflow: visible; }
-  .art-col:not(.art-col-rev) .art-track { display: block; animation: none; }
-  .art-col:not(.art-col-rev) .art-track img {
-    position: absolute;
-    left: 0; top: 50%;
-    opacity: 0;
-    animation: coverFade 20s ease-in-out infinite;
-  }
-  .art-col:not(.art-col-rev) .art-track img:nth-child(n+6) { display: none; }
-  .art-col:not(.art-col-rev) .art-track img:nth-child(2) { animation-delay: 4s; }
-  .art-col:not(.art-col-rev) .art-track img:nth-child(3) { animation-delay: 8s; }
-  .art-col:not(.art-col-rev) .art-track img:nth-child(4) { animation-delay: 12s; }
-  .art-col:not(.art-col-rev) .art-track img:nth-child(5) { animation-delay: 16s; }
-  .art-col-rev { margin-top: 0; }
 
   .cover-copy { max-width: none; }
   .deck-title { font-size: clamp(3.2rem, 14vw, 5.4rem); }
@@ -1444,7 +1444,8 @@ html:not(.js) .donut .seg { stroke-dasharray: var(--d); }
   .chart .y { left: -38px; font-size: 0.72rem; }
   .chart .pt span { font-size: 0.74rem; }
   .founder-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 22px; }
-  .mobile-feature { flex-direction: column; align-items: flex-start; gap: 18px; padding: 20px; }
+  .mobile-feature { padding: 20px; }
+  .mobile-slide { flex-direction: column; align-items: flex-start; gap: 18px; }
   .mobile-feature h3 { font-size: 1.9rem; }
   .slide-contact { padding-bottom: 210px; }
 }
@@ -1557,7 +1558,8 @@ html:not(.js) .donut .seg { stroke-dasharray: var(--d); }
   .deck-social { margin-bottom: 16px !important; }
   .slide-contact { padding-bottom: 46px !important; }
   .mobile-live { gap: 14px !important; margin-bottom: 14px !important; }
-  .mobile-feature { padding: 16px 20px !important; gap: 18px !important; }
+  .mobile-feature { padding: 16px 20px !important; }
+  .mobile-slide { gap: 18px !important; }
   .mobile-icon { width: 84px !important; height: 84px !important; }
   .mobile-feature h3 { font-size: 1.7rem !important; }
   .mobile-summary { font-size: 0.8rem !important; line-height: 1.45 !important; margin-bottom: 8px !important; }

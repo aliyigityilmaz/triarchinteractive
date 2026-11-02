@@ -174,53 +174,86 @@ function gameIcon(game, className) {
   return img;
 }
 
+function buildFeature(game, isTop) {
+  const slide = make('div', 'mobile-slide');
+  if (game.icon) slide.appendChild(gameIcon(game, 'mobile-icon'));
+  const body = make('div', 'mobile-feature-body');
+  body.appendChild(make('p', 'mobile-eyebrow', isTop && game.minInstalls > 0 ? 'Most downloaded' : 'Live on Google Play'));
+  body.appendChild(make('h3', null, game.title));
+  if (game.summary) body.appendChild(make('p', 'mobile-summary', game.summary));
+
+  const chips = make('ul', 'mobile-chips');
+  if (game.genre) chips.appendChild(make('li', null, game.genre));
+  if (game.free) chips.appendChild(make('li', null, 'Free to play'));
+  if (game.minInstalls > 0) chips.appendChild(make('li', 'hl', game.installs + ' installs'));
+  if (game.score && game.ratings > 0) chips.appendChild(make('li', 'hl', game.score.toFixed(1) + ' ★ · ' + game.ratings + ' ratings'));
+  body.appendChild(chips);
+
+  const link = make('a', 'slide-link', 'View on Google Play ↗');
+  link.href = game.url;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  body.appendChild(link);
+  slide.appendChild(body);
+  return slide;
+}
+
+function buildListItem(game) {
+  const item = make('li');
+  const a = make('a');
+  a.href = game.url;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  if (game.icon) a.appendChild(gameIcon(game, 'mobile-list-icon'));
+  const text = make('span');
+  text.appendChild(make('b', null, game.title));
+  const detail = [game.genre, game.minInstalls > 0 ? game.installs + ' installs' : null].filter(Boolean).join(' · ');
+  if (detail) text.appendChild(make('em', null, detail));
+  a.appendChild(text);
+  item.appendChild(a);
+  return item;
+}
+
 function renderMobileSlide(data) {
   const live = document.getElementById('mobileLive');
   if (!live || data.games.length === 0) return;
 
   const ranked = TriarchData.byInstalls(data.games);
-  const top = ranked[0];
-  const others = ranked.slice(1, 4);
 
+  /* Left: every game cross-fades through the feature card */
   const feature = document.getElementById('mobileFeature');
-  if (top.icon) feature.appendChild(gameIcon(top, 'mobile-icon'));
-  const body = make('div', 'mobile-feature-body');
-  body.appendChild(make('p', 'mobile-eyebrow', top.minInstalls > 0 ? 'Most downloaded' : 'Live on Google Play'));
-  body.appendChild(make('h3', null, top.title));
-  if (top.summary) body.appendChild(make('p', 'mobile-summary', top.summary));
+  const cards = ranked.map((game, i) => feature.appendChild(buildFeature(game, i === 0)));
+  let current = 0;
+  cards[0].classList.add('is-active');
+  if (cards.length > 1 && !prefersReducedMotion) {
+    setInterval(() => {
+      cards[current].classList.remove('is-active');
+      current = (current + 1) % cards.length;
+      cards[current].classList.add('is-active');
+    }, 3500);
+  }
 
-  const chips = make('ul', 'mobile-chips');
-  if (top.genre) chips.appendChild(make('li', null, top.genre));
-  if (top.free) chips.appendChild(make('li', null, 'Free to play'));
-  if (top.minInstalls > 0) chips.appendChild(make('li', 'hl', top.installs + ' installs'));
-  if (top.score && top.ratings > 0) chips.appendChild(make('li', 'hl', top.score.toFixed(1) + ' ★ · ' + top.ratings + ' ratings'));
-  body.appendChild(chips);
-
-  const link = make('a', 'slide-link', 'View on Google Play ↗');
-  link.href = top.url;
-  link.target = '_blank';
-  link.rel = 'noopener';
-  body.appendChild(link);
-  feature.appendChild(body);
-
+  /* Right: three rows; a new game drops in from the top while the bottom one leaves */
   const list = document.getElementById('mobileList');
-  others.forEach((game) => {
-    const item = make('li');
-    const a = make('a');
-    a.href = game.url;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    if (game.icon) a.appendChild(gameIcon(game, 'mobile-list-icon'));
-    const text = make('span');
-    text.appendChild(make('b', null, game.title));
-    const detail = [game.genre, game.minInstalls > 0 ? game.installs + ' installs' : null].filter(Boolean).join(' · ');
-    if (detail) text.appendChild(make('em', null, detail));
-    a.appendChild(text);
-    item.appendChild(a);
-    list.appendChild(item);
-  });
+  const VISIBLE = 3;
+  const shown = Math.min(VISIBLE, ranked.length);
+  let next = shown;
+  for (let i = 0; i < shown; i++) list.appendChild(buildListItem(ranked[i]));
+  if (ranked.length > VISIBLE && !prefersReducedMotion) {
+    setInterval(() => {
+      const last = list.lastElementChild;
+      last.classList.add('is-leaving');
+      setTimeout(() => {
+        last.remove();
+        const item = buildListItem(ranked[next % ranked.length]);
+        item.classList.add('is-entering');
+        list.insertBefore(item, list.firstElementChild);
+        next++;
+      }, 450);
+    }, 2800);
+  }
 
-  live.classList.toggle('is-solo', others.length === 0);
+  live.classList.toggle('is-solo', ranked.length < 2);
   live.hidden = false;
 }
 
