@@ -233,24 +233,14 @@ function renderMobileSlide(data) {
     }, 3500);
   }
 
-  /* Right: three rows; a new game drops in from the top while the bottom one leaves */
+  /* Right: continuous top-to-bottom marquee, same flow as the cover art (list is doubled for a seamless loop) */
   const list = document.getElementById('mobileList');
-  const VISIBLE = 3;
-  const shown = Math.min(VISIBLE, ranked.length);
-  let next = shown;
-  for (let i = 0; i < shown; i++) list.appendChild(buildListItem(ranked[i]));
-  if (ranked.length > VISIBLE && !prefersReducedMotion) {
-    setInterval(() => {
-      const last = list.lastElementChild;
-      last.classList.add('is-leaving');
-      setTimeout(() => {
-        last.remove();
-        const item = buildListItem(ranked[next % ranked.length]);
-        item.classList.add('is-entering');
-        list.insertBefore(item, list.firstElementChild);
-        next++;
-      }, 450);
-    }, 2800);
+  const flows = ranked.length > 3 && !prefersReducedMotion;
+  const rows = flows ? ranked.concat(ranked) : ranked;
+  rows.forEach((game) => list.appendChild(buildListItem(game)));
+  if (flows) {
+    list.style.setProperty('--flow', ranked.length * 4 + 's');
+    list.classList.add('is-flowing');
   }
 
   live.classList.toggle('is-solo', ranked.length < 2);

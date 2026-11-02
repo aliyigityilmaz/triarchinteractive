@@ -969,12 +969,26 @@
   transition: border-color 0.25s, transform 0.25s;
 }
 
-.mobile-list li.is-entering { animation: listDrop 0.5s ease both; }
-.mobile-list li.is-leaving { opacity: 0; transform: translateY(14px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.mobile-list-wrap {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+          mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+}
 
-@keyframes listDrop {
-  from { opacity: 0; transform: translateY(-18px); }
-  to   { opacity: 1; transform: none; }
+.mobile-list.is-flowing {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  justify-content: flex-start;
+  animation: listFlow var(--flow, 40s) linear infinite;
+}
+
+.mobile-list-wrap:hover .mobile-list.is-flowing { animation-play-state: paused; }
+
+@keyframes listFlow {
+  from { transform: translateY(calc(-50% - 5px)); }
+  to   { transform: translateY(0); }
 }
 
 .mobile-list a:hover {
