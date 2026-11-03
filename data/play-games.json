@@ -65,13 +65,13 @@
       "genre": "Simulation",
       "free": true,
       "adSupported": true,
-      "offersIAP": false,
+      "offersIAP": true,
       "installs": "10+",
       "minInstalls": 10,
       "score": null,
       "ratings": 0,
       "released": "2026-10-22",
-      "updated": "2026-11-02"
+      "updated": "2026-11-03"
     },
     {
       "id": "com.triarchinteractive.cozyislandfarm",
