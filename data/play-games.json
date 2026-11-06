@@ -2,6 +2,24 @@
   "developerUrl": "https://play.google.com/store/apps/developer?id=Triarch+Interactive",
   "games": [
     {
+      "id": "com.triarchinteractive.idlespacecolony",
+      "title": "Idle Space Colony",
+      "url": "https://play.google.com/store/apps/details?id=com.triarchinteractive.idlespacecolony",
+      "icon": "assets/play/com.triarchinteractive.idlespacecolony.webp",
+      "iconKey": "XUNRwUvv-md_CopWaIBikuI3c5Ybbt02J8kggwxaq88SuInqLzQWxs-w6zYWl88XqGTMcJ0TaiWqiNEiRt5iZys",
+      "summary": "Build a space colony, automate your mines and grow an idle galactic empire!",
+      "genre": "Casual",
+      "free": true,
+      "adSupported": true,
+      "offersIAP": false,
+      "installs": "0+",
+      "minInstalls": 0,
+      "score": null,
+      "ratings": 0,
+      "released": "2026-11-03",
+      "updated": "2026-11-03"
+    },
+    {
       "id": "com.triarchinteractive.tinytrain",
       "title": "Tiny Train",
       "url": "https://play.google.com/store/apps/details?id=com.triarchinteractive.tinytrain",
