@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Border Battles: 1444</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #0b111a; }
+      #unity-canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; background: #0b111a; }
+      #bb-loading { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        font: 600 18px system-ui, sans-serif; letter-spacing: .12em; color: #ffcc47; }
+      #bb-bar { width: 240px; height: 4px; margin-top: 16px; background: #1c2633; border-radius: 2px; overflow: hidden; }
+      #bb-fill { width: 0; height: 100%; background: #ffcc47; }
+    </style>
+  </head>
+  <body>
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <div id="bb-loading">BORDER BATTLES: 1444<div id="bb-bar"><div id="bb-fill"></div></div></div>
+    <script src="Build/borderbattles1444.loader.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/borderbattles1444.data.unityweb",
+        frameworkUrl: "Build/borderbattles1444.framework.js.unityweb",
+        codeUrl: "Build/borderbattles1444.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Triarch Interactive",
+        productName: "Border Battles: 1444",
+        productVersion: "0.1.0",
+        matchWebGLToCanvasSize: true
+      }, function (p) { document.getElementById("bb-fill").style.width = (p * 100) + "%"; })
+        .then(function () { document.getElementById("bb-loading").remove(); })
+        .catch(function (e) { document.getElementById("bb-loading").textContent = "Could not start: " + e; });
+    </script>
+  </body>
+</html>

@@ -817,6 +817,11 @@ nav a:hover::after {
   margin-top: auto;
 }
 
+/* Web game cards: landscape screenshot instead of portrait key art */
+.web-thumb { aspect-ratio: 4 / 3; }
+#webGrid { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1100px) { #webGrid { grid-template-columns: repeat(2, 1fr); } }
+
 /* Google Play cards: square app icon over a blurred copy of itself */
 .play-thumb {
   display: grid;

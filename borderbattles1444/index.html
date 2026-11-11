@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Border Battles: 1444 — Play Free in Your Browser | Triarch Interactive</title>
+  <meta name="description" content="Border Battles: 1444 — a grand-strategy map game. Play it free in your browser, no download. By Triarch Interactive.">
+  <meta name="theme-color" content="#0b111a">
+  <link rel="canonical" href="https://triarchinteractive.com/borderbattles1444/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Triarch Interactive">
+  <meta property="og:title" content="Border Battles: 1444 — Play Free in Your Browser">
+  <meta property="og:description" content="Play Border Battles: 1444 free in your browser. By Triarch Interactive.">
+  <meta property="og:url" content="https://triarchinteractive.com/borderbattles1444/">
+  <meta property="og:image" content="https://triarchinteractive.com/assets/games/borderbattles1444.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="../assets/companylogo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0d;
+      --game-bg: #0b111a;
+      --text: #f4f3f6;
+      --dim: rgba(244,243,246,0.62);
+      --violet: #7b3fe4;
+      --violet-2: #b79bff;
+      --border: rgba(244,243,246,0.11);
+      --gold: #ffcc47;
+      --bar: 54px;
+      --rail: 64px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'Barlow', system-ui, sans-serif; overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--violet-2); outline-offset: 2px; border-radius: 4px; }
+
+    /* ── Layout: top bar, side rails, game ── */
+    .shell {
+      position: fixed; inset: 0;
+      display: grid;
+      grid-template-columns: var(--rail) 1fr var(--rail);
+      grid-template-rows: var(--bar) 1fr;
+      background:
+        radial-gradient(ellipse 800px 420px at 10% 0%, rgba(123,63,228,0.16), transparent 60%),
+        var(--bg);
+    }
+    .topbar {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .brand img { width: 28px; height: 28px; }
+    .brand span { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.35rem; letter-spacing: 3px; white-space: nowrap; }
+    .brand small { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .78rem; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); padding-left: 12px; margin-left: 2px; border-left: 1px solid var(--border); white-space: nowrap; }
+
+    .links { display: flex; align-items: center; gap: 6px; }
+    .links a {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 12px; border-radius: 999px;
+      border: 1px solid var(--border);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .85rem; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--dim); transition: color .2s, border-color .2s, background .2s;
+    }
+    .links a:hover { color: var(--text); border-color: var(--violet); background: rgba(123,63,228,0.14); }
+    .links img { width: 16px; height: 16px; opacity: .85; }
+    .links .play { color: var(--text); background: var(--violet); border-color: var(--violet); }
+    .links .play:hover { background: #8d57ec; }
+    .links .play.soon { background: transparent; border-style: dashed; color: var(--dim); cursor: default; }
+
+    .rail {
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .rail span {
+      writing-mode: vertical-rl;
+      font-family: 'Bebas Neue', Impact, sans-serif; font-size: 2.6rem; letter-spacing: 12px; white-space: nowrap;
+      color: transparent; -webkit-text-stroke: 1px rgba(183,155,255,0.38);
+      user-select: none;
+    }
+    .rail-left span { transform: rotate(180deg); }
+
+    .stage { position: relative; min-width: 0; min-height: 0; background: var(--game-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 0 0 14px; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+    .stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+    .stage .fs {
+      position: absolute; right: 10px; bottom: 10px; z-index: 2;
+      width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border);
+      background: rgba(10,10,13,.7); color: var(--text); cursor: pointer; display: grid; place-items: center;
+      opacity: .7; transition: opacity .2s;
+    }
+    .stage .fs:hover { opacity: 1; }
+    .stage .fs svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ── Splash ── */
+    .splash {
+      position: fixed; inset: 0; z-index: 10;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+      background:
+        radial-gradient(ellipse 700px 420px at 50% 42%, rgba(123,63,228,0.28), transparent 70%),
+        var(--bg);
+      cursor: pointer;
+      transition: opacity .7s ease, visibility .7s;
+    }
+    .splash.done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .splash img { width: 96px; height: 96px; animation: pop 1s cubic-bezier(.2,.8,.2,1) both; filter: drop-shadow(0 0 30px rgba(123,63,228,.7)); }
+    .splash .studio { font-family: 'Bebas Neue', Impact, sans-serif; font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: 8px; padding-left: 8px; animation: rise .9s .25s ease both; }
+    .splash .presents { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .85rem; letter-spacing: 6px; text-transform: uppercase; color: var(--dim); animation: rise .9s .55s ease both; }
+    .splash .title { font-family: 'Bebas Neue', Impact, sans-serif; font-size: clamp(2.2rem, 8vw, 4.4rem); letter-spacing: 4px; color: var(--gold); text-align: center; line-height: 1; animation: rise .9s .9s ease both; }
+    .splash .title small { display: block; font-size: .5em; letter-spacing: 12px; margin-top: 6px; color: var(--text); opacity: .85; }
+    .splash .skip { position: absolute; bottom: 22px; font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--dim); animation: rise .9s 1.4s ease both; }
+    @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    /* ── Responsive ── */
+    @media (max-width: 1000px) {
+      .shell { grid-template-columns: 1fr; }
+      .rail { display: none; }
+      .stage { grid-column: 1; }
+      .stage { margin: 0; border-radius: 0; border-width: 1px 0 0; }
+      .brand small { display: none; }
+    }
+    @media (max-width: 640px) {
+      :root { --bar: 46px; }
+      .topbar { padding: 0 10px; }
+      .brand span { font-size: 1.1rem; letter-spacing: 2px; }
+      .links a { padding: 6px 9px; }
+      .links a .t { display: none; }
+      .links .play .t, .links .home .t { display: inline; }
+      .links .social-link .t { display: none; }
+    }
+    @media (max-width: 400px) { .brand span { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .splash *, .splash { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="../" aria-label="Triarch Interactive — home">
+        <img src="../assets/companylogo.png" alt="" width="28" height="28">
+        <span>TRIARCH INTERACTIVE</span>
+        <small>Border Battles: 1444</small>
+      </a>
+      <nav class="links" aria-label="Follow Triarch Interactive">
+        <a class="social-link" href="https://tiktok.com/@triarchinteractive" target="_blank" rel="noopener"><img src="../assets/icons/tiktok.png" alt=""><span class="t">TikTok</span></a>
+        <a class="social-link" href="https://www.youtube.com/@TriarchInteractive" target="_blank" rel="noopener"><img src="../assets/icons/youtube.png" alt=""><span class="t">YouTube</span></a>
+        <a class="social-link" href="https://www.instagram.com/triarchinteractive/" target="_blank" rel="noopener"><img src="../assets/icons/instagram.png" alt=""><span class="t">Instagram</span></a>
+        <!-- GOOGLE PLAY: when the listing is live, put its URL in data-href below (and remove class "soon"). -->
+        <a class="play soon" id="playLink" data-href="" href="#" aria-disabled="true"><span class="t">Google Play · Soon</span></a>
+      </nav>
+    </header>
+
+    <aside class="rail rail-left" aria-hidden="true"><span>TRIARCH INTERACTIVE</span></aside>
+
+    <main class="stage" id="stage">
+      <iframe id="game" title="Border Battles: 1444" src="play/" allow="autoplay; fullscreen" loading="eager"></iframe>
+      <button class="fs" id="fsBtn" type="button" aria-label="Fullscreen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+      </button>
+    </main>
+
+    <aside class="rail rail-right" aria-hidden="true"><span>TRIARCH INTERACTIVE</span></aside>
+  </div>
+
+  <div class="splash" id="splash" role="presentation">
+    <img src="../assets/companylogo.png" alt="Triarch Interactive logo">
+    <div class="studio">TRIARCH INTERACTIVE</div>
+    <div class="presents">presents</div>
+    <div class="title">BORDER BATTLES<small>1444</small></div>
+    <div class="skip">Click to skip</div>
+  </div>
+
+  <script>
+    (function () {
+      // Splash: shown for ~3s (the game keeps loading underneath), click to skip.
+      var splash = document.getElementById('splash');
+      var closed = false;
+      function closeSplash() {
+        if (closed) return; closed = true;
+        splash.classList.add('done');
+        setTimeout(function () { splash.remove(); }, 800);
+        var f = document.getElementById('game'); try { f.focus(); } catch (e) {}
+      }
+      splash.addEventListener('click', closeSplash);
+      setTimeout(closeSplash, 3200);
+
+      // Google Play link: stays a "Soon" pill until data-href is filled in.
+      var play = document.getElementById('playLink');
+      var url = play.getAttribute('data-href');
+      if (url) {
+        play.href = url; play.target = '_blank'; play.rel = 'noopener';
+        play.classList.remove('soon'); play.removeAttribute('aria-disabled');
+        play.innerHTML = '<span class="t">Get it on Google Play</span>';
+      } else {
+        play.addEventListener('click', function (e) { e.preventDefault(); });
+      }
+
+      // Fullscreen for the game stage.
+      var stage = document.getElementById('stage');
+      var btn = document.getElementById('fsBtn');
+      if (!stage.requestFullscreen) { btn.hidden = true; }
+      btn.addEventListener('click', function () {
+        if (document.fullscreenElement) document.exitFullscreen();
+        else stage.requestFullscreen().catch(function () {});
+      });
+    })();
+  </script>
+</body>
+</html>
