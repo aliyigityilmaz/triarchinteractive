@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSZ654G5GR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XSZ654G5GR');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Border Battles: 1444 — Play Free in Your Browser | Triarch Interactive</title>
-  <meta name="description" content="Border Battles: 1444 — a grand-strategy map game. Play it free in your browser, no download. By Triarch Interactive.">
+  <meta name="description" content="Border Battles: 1444 — roll the dice, redraw the world. Play it free in your browser, no download. By Triarch Interactive.">
   <meta name="theme-color" content="#0b111a">
   <link rel="canonical" href="https://triarchinteractive.com/borderbattles1444/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Triarch Interactive">
   <meta property="og:title" content="Border Battles: 1444 — Play Free in Your Browser">
-  <meta property="og:description" content="Play Border Battles: 1444 free in your browser. By Triarch Interactive.">
+  <meta property="og:description" content="Roll the dice. Redraw the world. Play Border Battles: 1444 free in your browser.">
   <meta property="og:url" content="https://triarchinteractive.com/borderbattles1444/">
-  <meta property="og:image" content="https://triarchinteractive.com/assets/games/borderbattles1444.jpg">
+  <meta property="og:image" content="https://triarchinteractive.com/assets/webgames/bb1444-social.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/png" href="../assets/companylogo.png">
+  <meta name="twitter:image" content="https://triarchinteractive.com/assets/webgames/bb1444-social.png">
+  <link rel="icon" type="image/png" href="../assets/webgames/bb1444-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +45,6 @@
     a { color: inherit; text-decoration: none; }
     :focus-visible { outline: 2px solid var(--violet-2); outline-offset: 2px; border-radius: 4px; }
 
-    /* ── Layout: top bar, side rails, game ── */
     .shell {
       position: fixed; inset: 0;
       display: grid;
@@ -63,18 +71,14 @@
       padding: 7px 12px; border-radius: 999px;
       border: 1px solid var(--border);
       font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .85rem; letter-spacing: 1.5px; text-transform: uppercase;
-      color: var(--dim); transition: color .2s, border-color .2s, background .2s;
+      color: var(--dim); transition: color .2s, border-color .2s, background .2s; white-space: nowrap;
     }
     .links a:hover { color: var(--text); border-color: var(--violet); background: rgba(123,63,228,0.14); }
     .links img { width: 16px; height: 16px; opacity: .85; }
     .links .play { color: var(--text); background: var(--violet); border-color: var(--violet); }
     .links .play:hover { background: #8d57ec; }
-    .links .play.soon { background: transparent; border-style: dashed; color: var(--dim); cursor: default; }
 
-    .rail {
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-    }
+    .rail { display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .rail span {
       writing-mode: vertical-rl;
       font-family: 'Bebas Neue', Impact, sans-serif; font-size: 2.6rem; letter-spacing: 12px; white-space: nowrap;
@@ -83,7 +87,7 @@
     }
     .rail-left span { transform: rotate(180deg); }
 
-    .stage { position: relative; min-width: 0; min-height: 0; background: var(--game-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 0 0 14px; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
+    .stage { position: relative; grid-column: 2; min-width: 0; min-height: 0; background: var(--game-bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin: 0 0 14px; box-shadow: 0 24px 60px rgba(0,0,0,.5); }
     .stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
     .stage .fs {
       position: absolute; right: 10px; bottom: 10px; z-index: 2;
@@ -94,32 +98,43 @@
     .stage .fs:hover { opacity: 1; }
     .stage .fs svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* ── Splash ── */
+    /* ── Intro / pre-play screen ── */
     .splash {
-      position: fixed; inset: 0; z-index: 10;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+      position: fixed; inset: 0; z-index: 10; overflow-y: auto;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+      padding: 24px;
       background:
-        radial-gradient(ellipse 700px 420px at 50% 42%, rgba(123,63,228,0.28), transparent 70%),
+        radial-gradient(ellipse 700px 420px at 50% 40%, rgba(123,63,228,0.28), transparent 70%),
         var(--bg);
-      cursor: pointer;
-      transition: opacity .7s ease, visibility .7s;
+      transition: opacity .6s ease, visibility .6s;
     }
     .splash.done { opacity: 0; visibility: hidden; pointer-events: none; }
-    .splash img { width: 96px; height: 96px; animation: pop 1s cubic-bezier(.2,.8,.2,1) both; filter: drop-shadow(0 0 30px rgba(123,63,228,.7)); }
-    .splash .studio { font-family: 'Bebas Neue', Impact, sans-serif; font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: 8px; padding-left: 8px; animation: rise .9s .25s ease both; }
+    .splash .logo { width: 88px; height: 88px; animation: pop 1s cubic-bezier(.2,.8,.2,1) both; filter: drop-shadow(0 0 30px rgba(123,63,228,.7)); }
+    .splash .studio { font-family: 'Bebas Neue', Impact, sans-serif; font-size: clamp(1.8rem, 6vw, 3rem); letter-spacing: 8px; padding-left: 8px; text-align: center; animation: rise .9s .25s ease both; }
     .splash .presents { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .85rem; letter-spacing: 6px; text-transform: uppercase; color: var(--dim); animation: rise .9s .55s ease both; }
     .splash .title { font-family: 'Bebas Neue', Impact, sans-serif; font-size: clamp(2.2rem, 8vw, 4.4rem); letter-spacing: 4px; color: var(--gold); text-align: center; line-height: 1; animation: rise .9s .9s ease both; }
-    .splash .title small { display: block; font-size: .5em; letter-spacing: 12px; margin-top: 6px; color: var(--text); opacity: .85; }
-    .splash .skip { position: absolute; bottom: 22px; font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--dim); animation: rise .9s 1.4s ease both; }
+    .splash .title small { display: block; font-size: .5em; letter-spacing: 12px; margin-top: 6px; color: var(--text); opacity: .85; padding-left: 12px; }
+    .splash .tag { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; font-size: .85rem; color: #aebbd0; text-align: center; animation: rise .9s 1.1s ease both; }
+    .playbtn {
+      appearance: none; cursor: pointer; border: 0;
+      font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.9rem; letter-spacing: 6px; padding: 12px 56px 12px 62px;
+      color: #1a1405; background: var(--gold); border-radius: 999px;
+      box-shadow: 0 0 0 0 rgba(255,204,71,.5);
+      animation: rise .9s 1.4s ease both, pulse 2.2s 2.4s infinite;
+      transition: transform .15s, background .2s;
+    }
+    .playbtn:hover { transform: scale(1.05); background: #ffd96b; }
+    .splash .also { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); animation: rise .9s 1.7s ease both; }
+    .splash .also a:hover { color: var(--text); }
     @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
     @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,204,71,.45); } 70% { box-shadow: 0 0 0 18px rgba(255,204,71,0); } 100% { box-shadow: 0 0 0 0 rgba(255,204,71,0); } }
 
-    /* ── Responsive ── */
+    @media (max-width: 1180px) { .links .t { display: none; } .links .play .t { display: inline; } }
     @media (max-width: 1000px) {
       .shell { grid-template-columns: 1fr; }
       .rail { display: none; }
-      .stage { grid-column: 1; }
-      .stage { margin: 0; border-radius: 0; border-width: 1px 0 0; }
+      .stage { grid-column: 1; margin: 0; border-radius: 0; border-width: 1px 0 0; }
       .brand small { display: none; }
     }
     @media (max-width: 640px) {
@@ -127,9 +142,9 @@
       .topbar { padding: 0 10px; }
       .brand span { font-size: 1.1rem; letter-spacing: 2px; }
       .links a { padding: 6px 9px; }
-      .links a .t { display: none; }
-      .links .play .t, .links .home .t { display: inline; }
-      .links .social-link .t { display: none; }
+      .links .t { display: none; }
+      .links .play .t { display: inline; }
+      .links .all { display: none; }
     }
     @media (max-width: 400px) { .brand span { display: none; } }
     @media (prefers-reduced-motion: reduce) { .splash *, .splash { animation: none !important; transition: none !important; } }
@@ -144,19 +159,19 @@
         <span>TRIARCH INTERACTIVE</span>
         <small>Border Battles: 1444</small>
       </a>
-      <nav class="links" aria-label="Follow Triarch Interactive">
-        <a class="social-link" href="https://tiktok.com/@triarchinteractive" target="_blank" rel="noopener"><img src="../assets/icons/tiktok.png" alt=""><span class="t">TikTok</span></a>
-        <a class="social-link" href="https://www.youtube.com/@TriarchInteractive" target="_blank" rel="noopener"><img src="../assets/icons/youtube.png" alt=""><span class="t">YouTube</span></a>
-        <a class="social-link" href="https://www.instagram.com/triarchinteractive/" target="_blank" rel="noopener"><img src="../assets/icons/instagram.png" alt=""><span class="t">Instagram</span></a>
-        <!-- GOOGLE PLAY: when the listing is live, put its URL in data-href below (and remove class "soon"). -->
-        <a class="play soon" id="playLink" data-href="" href="#" aria-disabled="true"><span class="t">Google Play · Soon</span></a>
+      <nav class="links" aria-label="Follow Border Battles">
+        <a class="all" href="../webgames/"><span>All Web Games</span></a>
+        <a href="https://www.tiktok.com/@borderbattlesgame" target="_blank" rel="noopener" aria-label="TikTok"><img src="../assets/icons/tiktok.png" alt=""><span class="t">TikTok</span></a>
+        <a href="https://www.youtube.com/@TriarchInteractive" target="_blank" rel="noopener" aria-label="YouTube"><img src="../assets/icons/youtube.png" alt=""><span class="t">YouTube</span></a>
+        <a href="https://www.instagram.com/borderbattlesgame" target="_blank" rel="noopener" aria-label="Instagram"><img src="../assets/icons/instagram.png" alt=""><span class="t">Instagram</span></a>
+        <a class="play" id="playLink" href="https://play.google.com/store/apps/details?id=com.triarchinteractive.borderbattles1444" target="_blank" rel="noopener"><span class="t">Google Play</span></a>
       </nav>
     </header>
 
     <aside class="rail rail-left" aria-hidden="true"><span>TRIARCH INTERACTIVE</span></aside>
 
     <main class="stage" id="stage">
-      <iframe id="game" title="Border Battles: 1444" src="play/" allow="autoplay; fullscreen" loading="eager"></iframe>
+      <iframe id="game" title="Border Battles: 1444" src="play/" allow="autoplay; fullscreen"></iframe>
       <button class="fs" id="fsBtn" type="button" aria-label="Fullscreen">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
       </button>
@@ -165,40 +180,37 @@
     <aside class="rail rail-right" aria-hidden="true"><span>TRIARCH INTERACTIVE</span></aside>
   </div>
 
-  <div class="splash" id="splash" role="presentation">
-    <img src="../assets/companylogo.png" alt="Triarch Interactive logo">
+  <div class="splash" id="splash">
+    <img class="logo" src="../assets/companylogo.png" alt="Triarch Interactive logo">
     <div class="studio">TRIARCH INTERACTIVE</div>
     <div class="presents">presents</div>
     <div class="title">BORDER BATTLES<small>1444</small></div>
-    <div class="skip">Click to skip</div>
+    <div class="tag">Roll the dice. Redraw the world.</div>
+    <button class="playbtn" id="playBtn" type="button">PLAY</button>
+    <div class="also">
+      <a href="https://www.tiktok.com/@borderbattlesgame" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/borderbattlesgame" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://play.google.com/store/apps/details?id=com.triarchinteractive.borderbattles1444" target="_blank" rel="noopener">Google Play</a>
+      <a href="../webgames/">All Web Games</a>
+    </div>
   </div>
 
   <script>
     (function () {
-      // Splash: shown for ~3s (the game keeps loading underneath), click to skip.
+      // The game loads behind the intro screen; PLAY reveals it (and counts as a "play" in Google Analytics).
       var splash = document.getElementById('splash');
-      var closed = false;
-      function closeSplash() {
-        if (closed) return; closed = true;
+      document.getElementById('playBtn').addEventListener('click', function () {
+        gtag('event', 'play_click', { game_name: 'border_battles_1444' });
         splash.classList.add('done');
-        setTimeout(function () { splash.remove(); }, 800);
-        var f = document.getElementById('game'); try { f.focus(); } catch (e) {}
-      }
-      splash.addEventListener('click', closeSplash);
-      setTimeout(closeSplash, 3200);
+        setTimeout(function () { splash.remove(); }, 700);
+        try { document.getElementById('game').contentWindow.focus(); } catch (e) {}
+      });
+      ['playLink'].forEach(function (id) {
+        document.getElementById(id).addEventListener('click', function () {
+          gtag('event', 'google_play_click', { game_name: 'border_battles_1444' });
+        });
+      });
 
-      // Google Play link: stays a "Soon" pill until data-href is filled in.
-      var play = document.getElementById('playLink');
-      var url = play.getAttribute('data-href');
-      if (url) {
-        play.href = url; play.target = '_blank'; play.rel = 'noopener';
-        play.classList.remove('soon'); play.removeAttribute('aria-disabled');
-        play.innerHTML = '<span class="t">Get it on Google Play</span>';
-      } else {
-        play.addEventListener('click', function (e) { e.preventDefault(); });
-      }
-
-      // Fullscreen for the game stage.
       var stage = document.getElementById('stage');
       var btn = document.getElementById('fsBtn');
       if (!stage.requestFullscreen) { btn.hidden = true; }
