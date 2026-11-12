@@ -16,16 +16,16 @@
   <body>
     <canvas id="unity-canvas" tabindex="-1"></canvas>
     <div id="bb-loading">BORDER BATTLES: 1444<div id="bb-bar"><div id="bb-fill"></div></div></div>
-    <script src="Build/borderbattles1444.loader.js"></script>
+    <script src="Build/borderbattles1444.loader.js?v=0.2.0"></script>
     <script>
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/borderbattles1444.data.unityweb",
-        frameworkUrl: "Build/borderbattles1444.framework.js.unityweb",
-        codeUrl: "Build/borderbattles1444.wasm.unityweb",
+        dataUrl: "Build/borderbattles1444.data.unityweb?v=0.2.0",
+        frameworkUrl: "Build/borderbattles1444.framework.js.unityweb?v=0.2.0",
+        codeUrl: "Build/borderbattles1444.wasm.unityweb?v=0.2.0",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Triarch Interactive",
         productName: "Border Battles: 1444",
-        productVersion: "0.1.0",
+        productVersion: "0.2.0",
         matchWebGLToCanvasSize: true
       }, function (p) { document.getElementById("bb-fill").style.width = (p * 100) + "%"; })
         .then(function () { document.getElementById("bb-loading").remove(); })
