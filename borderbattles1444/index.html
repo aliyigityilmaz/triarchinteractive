@@ -75,8 +75,9 @@
     }
     .links a:hover { color: var(--text); border-color: var(--violet); background: rgba(123,63,228,0.14); }
     .links img { width: 16px; height: 16px; opacity: .85; }
-    .links .play { color: var(--text); background: var(--violet); border-color: var(--violet); }
-    .links .play:hover { background: #8d57ec; }
+    .links .play { color: #fff; background: #0b0b0d; border: 1.5px solid rgba(255,255,255,.6); animation: gpPulse 2.6s infinite; }
+    .links .play:hover { background: #17171b; border-color: #fff; }
+    .links .play .gpi { width: 16px; height: 17px; opacity: 1; }
 
     .rail { display: flex; align-items: center; justify-content: center; overflow: hidden; }
     .rail span {
@@ -124,13 +125,27 @@
       transition: transform .15s, background .2s;
     }
     .playbtn:hover { transform: scale(1.05); background: #ffd96b; }
-    .splash .also { display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .8rem; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); animation: rise .9s 1.7s ease both; }
-    .splash .also a:hover { color: var(--text); }
+    .gp-btn {
+      display: inline-flex; align-items: center; gap: 14px; height: 58px; padding: 0 28px 0 20px; border-radius: 16px;
+      background: #0b0b0d; color: #fff; border: 1.5px solid rgba(255,255,255,.6);
+      box-shadow: 0 0 0 0 rgba(66,133,244,.55), 0 8px 24px rgba(0,0,0,.45);
+      animation: rise .9s 1.6s ease both, gpPulse 2.6s 2.6s infinite; transition: transform .15s, border-color .2s;
+    }
+    .gp-btn:hover { transform: translateY(-2px) scale(1.04); border-color: #fff; }
+    .gp-btn img { width: 28px; height: 30px; }
+    .gp-btn span { display: flex; flex-direction: column; font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.6rem; letter-spacing: 1px; line-height: .95; }
+    .gp-btn small { font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .66rem; letter-spacing: 1.6px; text-transform: uppercase; opacity: .85; }
+    @keyframes gpPulse { 0% { box-shadow: 0 0 0 0 rgba(66,133,244,.5), 0 8px 24px rgba(0,0,0,.45); } 70% { box-shadow: 0 0 0 16px rgba(66,133,244,0), 0 8px 24px rgba(0,0,0,.45); } 100% { box-shadow: 0 0 0 0 rgba(66,133,244,0), 0 8px 24px rgba(0,0,0,.45); } }
+    .splash .also { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; animation: rise .9s 1.9s ease both; }
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(244,243,246,.22); background: rgba(244,243,246,.06); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: .9rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text); transition: transform .15s, background .2s, border-color .2s; }
+    .chip img { width: 18px; height: 18px; }
+    .chip:hover { transform: translateY(-2px); background: rgba(123,63,228,.25); border-color: var(--violet-2); }
     @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
     @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,204,71,.45); } 70% { box-shadow: 0 0 0 18px rgba(255,204,71,0); } 100% { box-shadow: 0 0 0 0 rgba(255,204,71,0); } }
 
     @media (max-width: 1180px) { .links .t { display: none; } .links .play .t { display: inline; } }
+    @media (max-width: 1180px) { .links .play .t { font-size: 0; } .links .play .t::after { content: 'Google Play'; font-size: .85rem; } }
     @media (max-width: 1000px) {
       .shell { grid-template-columns: 1fr; }
       .rail { display: none; }
@@ -164,7 +179,7 @@
         <a href="https://www.tiktok.com/@borderbattlesgame" target="_blank" rel="noopener" aria-label="TikTok"><img src="../assets/icons/tiktok.png" alt=""><span class="t">TikTok</span></a>
         <a href="https://www.youtube.com/@BorderBattlesYT" target="_blank" rel="noopener" aria-label="YouTube"><img src="../assets/icons/youtube.png" alt=""><span class="t">YouTube</span></a>
         <a href="https://www.instagram.com/borderbattlesgame" target="_blank" rel="noopener" aria-label="Instagram"><img src="../assets/icons/instagram.png" alt=""><span class="t">Instagram</span></a>
-        <a class="play" id="playLink" href="https://play.google.com/store/apps/details?id=com.triarchinteractive.borderbattles1444" target="_blank" rel="noopener"><span class="t">Google Play</span></a>
+        <a class="play" id="playLink" href="https://play.google.com/store/apps/details?id=com.triarchinteractive.borderbattles1444" target="_blank" rel="noopener" aria-label="Get it on Google Play"><img class="gpi" src="../assets/webgames/google-play.webp" alt=""><span class="t">Get it on Google Play</span></a>
       </nav>
     </header>
 
@@ -187,12 +202,15 @@
     <div class="title">BORDER BATTLES<small>1444</small></div>
     <div class="tag">Roll the dice. Redraw the world.</div>
     <button class="playbtn" id="playBtn" type="button">PLAY</button>
+    <a class="gp-btn" id="gpSplash" href="https://play.google.com/store/apps/details?id=com.triarchinteractive.borderbattles1444" target="_blank" rel="noopener">
+      <img src="../assets/webgames/google-play.webp" alt="" width="28" height="30">
+      <span><small>Get it on</small>Google Play</span>
+    </a>
     <div class="also">
-      <a href="https://www.tiktok.com/@borderbattlesgame" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://www.instagram.com/borderbattlesgame" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.youtube.com/@BorderBattlesYT" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://play.google.com/store/apps/details?id=com.triarchinteractive.borderbattles1444" target="_blank" rel="noopener">Google Play</a>
-      <a href="../webgames/">All Web Games</a>
+      <a class="chip" href="https://www.tiktok.com/@borderbattlesgame" target="_blank" rel="noopener"><img src="../assets/icons/tiktok.png" alt="">TikTok</a>
+      <a class="chip" href="https://www.instagram.com/borderbattlesgame" target="_blank" rel="noopener"><img src="../assets/icons/instagram.png" alt="">Instagram</a>
+      <a class="chip" href="https://www.youtube.com/@BorderBattlesYT" target="_blank" rel="noopener"><img src="../assets/icons/youtube.png" alt="">YouTube</a>
+      <a class="chip" href="../webgames/">All Web Games</a>
     </div>
   </div>
 
@@ -206,7 +224,7 @@
         setTimeout(function () { splash.remove(); }, 700);
         try { document.getElementById('game').contentWindow.focus(); } catch (e) {}
       });
-      ['playLink'].forEach(function (id) {
+      ['playLink','gpSplash'].forEach(function (id) {
         document.getElementById(id).addEventListener('click', function () {
           gtag('event', 'google_play_click', { game_name: 'border_battles_1444' });
         });
