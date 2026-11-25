@@ -209,8 +209,8 @@
 }
 .asset-preview.on-dark  { background: #0a0a0d; }
 .asset-preview.on-light { background: #f4f3f6; }
-.asset-preview.cover { padding: 0; }
-.asset-preview.cover img { width: 100%; height: 100%; object-fit: cover; }
+.asset-preview.cover { padding: 0; background: #0a0a0d; }
+.asset-preview.cover img { width: 100%; height: 100%; object-fit: contain; }
 .asset-preview img { max-height: 100%; }
 .asset-meta {
   display: flex;
